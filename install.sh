@@ -1,7 +1,7 @@
 #!/bin/bash
 # ==============================================================================
 #  PORT DEL INSTALLER DE G0STKZ PARA UBUNTU/DEBIAN
-#  Basado en el trabajo de gh0stzk - Adaptado para tus Dotfiles
+#  Basado en el trabajo de gh0stzk - Esto es una basura de ChatGPT, mejor ve a: https://github.com/gh0stzk/dotfiles
 # ==============================================================================
 
 # Colores (Copiados del script original)
@@ -66,7 +66,8 @@ welcome() {
   ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Compilar Picom v12 (Animaciones)
   ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Clonar tus dotfiles y hacer BACKUP
   ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Instalar fuentes, temas y configs
-  ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Cambiar Shell a ZSH/Fish
+  ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Cambiar Shell a Fish
+  ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Romper el sistema porque el script no va, no lo uses anda xd
 
 ${BLD}${CGR}[${CRE}!${CGR}]${CNC} ${BLD}${CRE}Usa esto bajo tu propia responsabilidad.${CNC}
 "
@@ -93,7 +94,7 @@ install_dependencies() {
     # Lista de paquetes equivalentes para Ubuntu
     # He intentado buscar los equivalentes a lo que pedía G0stkz
     DEPENDENCIES=(
-        "bspwm" "sxhkd" "fish" "polybar" "rofi" "kitty" "feh" "dunst" 
+        "bspwm" "sxhkd" "fish" "lxappearance" "polybar" "rofi" "kitty" "feh" "dunst" 
         "fish" "zsh" "thunar" "thunar-archive-plugin" "thunar-volman" 
         "gvfs-backends" "calc" "unzip" "wget" "curl" "git" "jq"
         "build-essential" "autoconf" "automake" "cmake" "meson" "ninja-build"
@@ -103,7 +104,7 @@ install_dependencies() {
         "uthash-dev" "libglib2.0-dev" "imagemagick" "mpd" "ncmpcpp"
         "brightnessctl" "playerctl" "pamixer" "maim" "xclip" "xdotool"
         "python3-pip" "python3-gi" "redshift" "nemo" "flameshot" "brightnessctl" "xdotool"           
-        "libxdo-dev" "firejail" "playerctl" "pulseaudio-utils" "fastfetch" "imagemagick" 
+        "libxdo-dev" "firejail" "playerctl" "pulseaudio-utils" "imagemagick" 
     )
 
     printf "%b\n" "${BLD}${CYE}Instalando lista de paquetes...${CNC}"

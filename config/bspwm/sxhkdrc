@@ -39,11 +39,11 @@ super + w
 
 # Power Menu
 super + p
-    powermenu_t3
+    powermenu_t1 #t3 es el bueno, pero por ahora no va xd
 
 # Power Menu
 super + ctrl + q
-    powermenu_t3
+    powermenu_t1
 
 # Selector de fondo de pantalla
 super + ctrl + w

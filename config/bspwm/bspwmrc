@@ -83,10 +83,7 @@ fi
 # 🌄 APARIENCIA Y PANTALLA
 # =============================================================
 
-
-
 feh --bg-fill "$HOME/Wallpapers/top 5 monkey.jpg" & 
-
 
 # Redshift (Luz nocturna) - Comentado si da problemas en VM
 redshift &
@@ -107,14 +104,9 @@ sleep 0.2
 # 1. SXHKD (Teclado)
 sxhkd -c "$HOME/.config/bspwm/sxhkdrc" &
 
-# 2. DUNST (Notificaciones) - Importante cargarlo antes o junto al tema
-# (Se suele lanzar en el theme-config.bash, pero por seguridad:)
-# dunst -config "$HOME/.config/bspwm/dunstrc" & 
+dunst -config "$HOME/.config/bspwm/dunstrc" & 
 
-# 3. CARGAR TEMA (Colores, Picom y Polybar suelen ir aquí)
-# Este script 'theme-config.bash' suele lanzar Polybar y Picom.
-# Si lo descomentas, NO lances picom/polybar abajo manualmente.
 . "$HOME/.config/bspwm/rices/emilia/theme-config.bash"
 
-# picom -b --config "$HOME/.config/bspwm/config/picom.conf" &
-# bash "$HOME/.config/polybar/ghost/Bar.bash" &
+picom -b --config "$HOME/.config/bspwm/config/picom.conf" &
+bash "$HOME/.config/polybar/ghost/Bar.bash" &

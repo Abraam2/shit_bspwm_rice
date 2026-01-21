@@ -8,6 +8,14 @@ alias ff='fastfetch'
 alias bum='systemctl poweroff'
 alias shutdown='systemctl poweroff'
 
+
+# -----------------------------------------------------
+# Random
+# -----------------------------------------------------
+
+alias ospina='ssh batoi@172.17.222.20'
+alias clase='xprop | grep WM_CLASS'
+alias suso='sudo'
 # -----------------------------------------------------
 # ARCHIVOS Y NAVEGACIÓN
 # -----------------------------------------------------
@@ -19,22 +27,23 @@ alias f='finder'
 alias ..='cd ..'
 alias ...='cd ../..'
 
-# Inicializar zoxide
+# 1. Carga zoxide
 zoxide init fish | source
 
-# Función para que cd use zoxide y luego haga ls
-function cd
-    z $argv
-    and ls
+# 2. Sobrescribe z para que haga cd y luego ls
+function z
+    __zoxide_z $argv
+    ls
 end
 
 # -----------------------------------------------------
 # HERRAMIENTAS MODERNAS
 # -----------------------------------------------------
-alias ls='eza -a --icons=always --group-directories-first -I ".vboxclient*"'
+#alias ls='eza -a --icons=always --group-directories-first -I ".vboxclient*"'
+alias ls='eza -a --icons=always --group-directories-first'
 alias ll='eza -alh --icons=always --group-directories-first'
 alias lt='eza -a --tree --level=1 --icons=always'
-alias cat='batcat -p'
+alias bat='batcat --paging=never'
 alias catn='batcat'
 alias grep='rg'
 alias fd='fdfind'
