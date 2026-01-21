@@ -1,0 +1,32 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+THUMB_DIR="$SCRIPT_DIR/thumbnails"
+RESTORE_SCRIPT="$SCRIPT_DIR/restore.sh"
+THEME="$SCRIPT_DIR/style_thumbnail.rasi"
+
+list_index=()
+entries=""
+k=0
+
+for A in "$THUMB_DIR"/*; do
+    [ -f "$A" ] || continue
+    wid=$(basename "$A" .png)
+
+    window_name=$(xprop -id "$wid" WM_NAME 2>/dev/null | cut -d '"' -f2)
+    [ -z "$window_name" ] && window_name="$wid"
+
+    entries+="$k ~ $window_name\x00icon\x1f$A\n"
+    list_index+=("$wid")
+    ((k++))
+done
+
+[ -z "$entries" ] && exit 0
+
+window=$(printf "%b" "$entries" | rofi -dmenu -show-icons -theme "$THEME" -p "Hidden Windows:")
+[ -z "$window" ] && exit 0
+
+index="${window%% *}"
+wid="${list_index[$index]}"
+
+"$RESTORE_SCRIPT" "$wid"

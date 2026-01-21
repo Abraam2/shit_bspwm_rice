@@ -1,0 +1,77 @@
+configuration {
+    show-icons: false;
+    font: "JetBrainsMono Nerd Font 13";
+}
+
+* {
+    background: #0f111a;
+    background-alt: #1a1b26;
+    foreground: #c0caf5;
+    selected: #7aa2f7;
+    border-color: #7aa2f7;
+}
+
+window {
+    location: center;
+    anchor: center;
+    width: 1200px;
+    border: 2px;
+    border-color: @border-color;
+    background-color: @background;
+    padding: 10px;
+}
+
+mainbox {
+    spacing: 10px;
+    background-color: @background;
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    padding: 8px;
+    background-color: @background-alt;
+    border-radius: 6px;
+}
+
+prompt {
+    enabled: false;
+}
+
+entry {
+    text-color: @foreground;
+    background-color: transparent;
+    placeholder: "Buscar atajo...";
+}
+
+listview {
+    columns: 1;              /* ✅ UNA SOLA COLUMNA REAL */
+    lines: 25;
+    fixed-height: false;
+    fixed-columns: true;
+    cycle: true;
+    scrollbar: true;
+    background-color: transparent;
+}
+
+element {
+    padding: 6px;
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: @background-alt;
+    text-color: @selected;
+}
+
+element-text {
+    horizontal-align: 0.0;   /* ✅ IZQUIERDA */
+    vertical-align: 0.5;
+    text-color: inherit;
+}
+
+scrollbar {
+    handle-width: 6px;
+    handle-color: @selected;
+    background-color: @background-alt;
+}

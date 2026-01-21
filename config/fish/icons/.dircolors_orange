@@ -1,0 +1,15 @@
+# ~/.dircolors - Simplificado absoluto
+
+NORMAL 00
+FILE 00
+
+# Carpetas
+DIR 01;38;5;224       # Flamingo suave negrita
+
+# Archivos normales
+FILE 38;2;245;224;220         # Mocha pastel
+.* 38;2;245;224;220
+
+# Enlaces
+LINK 01;38;5;229      # Amarillo suave negrita
+

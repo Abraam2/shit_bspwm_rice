@@ -1,0 +1,12 @@
+# Carpetas
+DIR 01;38;2;203;166;247      # Morado protagonista (brillante)
+.*DIR 38;2;180;140;220       # Morado menos brillante (ocultas)
+
+# Archivos normales
+FILE 38;2;170;130;220        # Violeta claro, contraste real
+.* 38;2;150;110;200          # Violeta menos brillante (ocultos)
+
+# Ejecutables
+EXEC 38;2;170;130;220      
+.*EXEC 38;2;150;110;200       
+

@@ -1,0 +1,2 @@
+#!/bin/bash
+NO_FASTFETCH=1 kitty --class FloaTerm --name FloaTerm

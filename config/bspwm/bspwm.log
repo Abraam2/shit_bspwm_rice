@@ -1,0 +1,655 @@
++ /home/batoi/.fehbg
++ /usr/sbin/epoptes-client
+/home/batoi/.fehbg: 4: Syntax error: Unterminated quoted string
++ xset s off -dpms
++ export QT_QPA_PLATFORMTHEME=qt6ct
++ QT_QPA_PLATFORMTHEME=qt6ct
++ export _JAVA_AWT_WM_NONREPARENTING=1
++ _JAVA_AWT_WM_NONREPARENTING=1
++ PATH='/home/batoi/.config/bspwm/scripts:/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:/home/batoi/.cargo/bin:/home/batoi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
++ PATH='/home/batoi/.config/rofi/scripts:/home/batoi/.config/bspwm/scripts:/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:/home/batoi/.cargo/bin:/home/batoi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
++ redshift
++ read -r RICETHEME
++ export RICETHEME
++ rice_dir=/home/batoi/.config/bspwm/themes/emilia
++ export PULSE_SERVER=unix:/run/user/1000/pulse/native
++ PULSE_SERVER=unix:/run/user/1000/pulse/native
++ export GTK_USE_PORTAL=1
++ GTK_USE_PORTAL=1
++ export XDG_CURRENT_DESKTOP=X-Cinnamon
++ XDG_CURRENT_DESKTOP=X-Cinnamon
++ export XDG_SESSION_TYPE=x11
++ XDG_SESSION_TYPE=x11
++ export XDG_DESKTOP_PORTAL_DIR=/usr/share/xdg-desktop-portal/portals
++ XDG_DESKTOP_PORTAL_DIR=/usr/share/xdg-desktop-portal/portals
++ bspc rule -a Gsimplecal state=floating sticky=on rectangle=331x188+1487+60
+Could not connect to wayland display, exiting.
+No se ha podido iniciar el método de ajuste wayland.
+Probando el método siguiente...
+Usando el método «randr».
+A la espera de que la ubicación inicial esté disponible...
+Ubicación: 38.34° N, 0.49° O
++ export XCURSOR_THEME=Bibata-Modern-Ice
++ XCURSOR_THEME=Bibata-Modern-Ice
++ export XCURSOR_SIZE=24
++ XCURSOR_SIZE=24
++ xrdb -merge
++ xsetroot -cursor_name left_ptr
++ xrdb -merge
++ bspc monitor -d I II III IV V
++ bspc config external_rules_command /home/batoi/.config/bspwm/scripts/ExternalRules
++ bspc config automatic_scheme alternate
++ bspc config initial_polarity second_child
++ bspc config removal_adjustment true
++ bspc config split_ratio 0.51
++ bspc config window_gap 10
++ bspc config single_monocle true
++ bspc config borderless_monocle false
++ bspc config gapless_monocle false
++ bspc config focus_follows_pointer true
++ bspc config pointer_follows_focus false
++ bspc config pointer_follows_monitor true
++ bspc config pointer_motion_interval 5
++ bspc config pointer_modifier mod4
++ bspc config pointer_action1 move
++ bspc config pointer_action2 resize_side
++ bspc config pointer_action3 resize_corner
++ bspc rule -a scratch sticky=on state=floating focus=on
++ for process in picom polybar sxhkd
++ pgrep -x picom
++ /home/batoi/Scripts/aviso_batería.sh
++ case "$process" in
++ for process in picom polybar sxhkd
++ pgrep -x polybar
++ picom -b --config /home/batoi/.config/bspwm/config/picom.conf --log-level=info --log-file /home/batoi/.config/bspwm/picom_gost.log
++ case "$process" in
++ for process in picom polybar sxhkd
++ pgrep -x sxhkd
++ bash /home/batoi/.config/polybar/ghost/Bar.bash
+[ 21/01/26 07:58:29.440 session_init INFO ] Switching to log file: /home/batoi/.config/bspwm/picom_gost.log
++ case "$process" in
++ sxhkd -c /home/batoi/.config/bspwm/sxhkdrc
++ xsetroot -cursor_name left_ptr
++ pidof -q polkit-gnome-authentication-agent-1
++ setxkbmap es
++ command -v gnome-keyring-daemon
+++ gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+discover_other_daemon: 1+ /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
++ eval GNOME_KEYRING_CONTROL=/run/user/1000/keyring SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+++ GNOME_KEYRING_CONTROL=/run/user/1000/keyring
+++ SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
++ export SSH_AUTH_SOCK
++ export GPG_AGENT_INFO
++ export GNOME_KEYRING_CONTROL
++ picom -b --config /home/batoi/.config/bspwm/config/picom.conf --log-level=info --log-file /home/batoi/.config/bspwm/picom_gost.log
+[ 21/01/26 07:58:29.465 session_init INFO ] Switching to log file: /home/batoi/.config/bspwm/picom_gost.log
++ . /home/batoi/.config/bspwm/rices/emilia/theme-config.bash
+++ bg='#1a1b26'
+++ fg='#c0caf5'
+++ black='#15161e'
+++ red='#f7768e'
+++ green='#9ece6a'
+++ yellow='#e0af68'
+++ blue='#7aa2f7'
+++ magenta='#bb9af7'
+++ cyan='#7dcfff'
+++ white='#a9b1d6'
+++ blackb='#414868'
+++ redb='#f7768e'
+++ greenb='#9ece6a'
+++ yellowb='#e0af68'
+++ blueb='#7aa2f7'
+++ magentab='#bb9af7'
+++ cyanb='#7dcfff'
+++ whiteb='#c0caf5'
+++ accent_color='#222330'
+++ arch_icon='#0f94d2'
+++ BORDER_WIDTH=4
+++ TOP_PADDING=50
+++ BOTTOM_PADDING=1
+++ LEFT_PADDING=1
+++ RIGHT_PADDING=1
+++ NORMAL_BC='#77767B'
+++ FOCUSED_BC='#62A0EA'
+++ term_font_size=10
+++ term_font_name='JetBrainsMono Nerd Font'
+++ P_FADE=true
+++ P_SHADOWS=true
+++ SHADOW_C='#D15CED'
+++ P_CORNER_R=11
+++ P_BLUR=true
+++ P_ANIMATIONS=@
+++ P_TERM_OPACITY=1.0
+++ dunst_offset='(20, 60)'
+++ dunst_origin=top-right
+++ dunst_transparency=0
+++ dunst_corner_radius=6
+++ dunst_font='JetBrainsMono NF Medium 9'
+++ dunst_border=0
+++ dunst_frame_color='#222330'
+++ dunst_icon_theme=Pairus
+++ dunst_close_preset=fly-out
+++ dunst_close_direction=up
+++ dunst_open_preset=fly-in
+++ dunst_open_direction=up
+++ jg_bg='#1a1b26'
+++ jg_fg='#c0caf5'
+++ jg_sel_bg='#222330'
+++ jg_sel_fg='#c0caf5'
+++ jg_sep='#414868'
+++ rofi_font='JetBrainsMono NF Bold 9'
+++ rofi_background='#1a1b26'
+++ rofi_bg_alt='#222330'
+++ rofi_background_alt='#1a1b26E0'
+++ rofi_fg='#c0caf5'
+++ rofi_selected='#7aa2f7'
+++ rofi_active='#9ece6a'
+++ rofi_urgent='#f7768e'
+++ ENGINE=CustomDir
+++ CUSTOM_DIR=/home/batoi/Fondos
+++ CUSTOM_WALL=/home/batoi/Fondos/totoro.png
+++ CUSTOM_ANIMATED=/home/batoi/.config/bspwm/src/assets/animated_wall.mp4
+++ bspc config border_width 4
+++ bspc config normal_border_color '#77767B'
+++ bspc config focused_border_color '#62A0EA'
+++ bspc config top_padding 50
+++ bspc config bottom_padding 1
+++ bspc config left_padding 1
+++ bspc config right_padding 1
++ sxhkd -c /home/batoi/.config/bspwm/sxhkdrc
++ bash /home/batoi/.config/polybar/ghost/Bar.bash
+Could not grab key 36 with modfield 64: the combination is already grabbed.
+Could not grab key 36 with modfield 80: the combination is already grabbed.
+Could not grab key 36 with modfield 66: the combination is already grabbed.
+Could not grab key 36 with modfield 82: the combination is already grabbed.
+Could not grab key 36 with modfield 65: the combination is already grabbed.
+Could not grab key 36 with modfield 81: the combination is already grabbed.
+Could not grab key 36 with modfield 67: the combination is already grabbed.
+Could not grab key 36 with modfield 83: the combination is already grabbed.
+Could not grab key 36 with modfield 68: the combination is already grabbed.
+Could not grab key 36 with modfield 84: the combination is already grabbed.
+Could not grab key 36 with modfield 70: the combination is already grabbed.
+Could not grab key 36 with modfield 86: the combination is already grabbed.
+Could not grab key 26 with modfield 64: the combination is already grabbed.
+Could not grab key 26 with modfield 80: the combination is already grabbed.
+Could not grab key 26 with modfield 66: the combination is already grabbed.
+Could not grab key 26 with modfield 82: the combination is already grabbed.
+Could not grab key 25 with modfield 8: the combination is already grabbed.
+Could not grab key 25 with modfield 24: the combination is already grabbed.
+Could not grab key 25 with modfield 10: the combination is already grabbed.
+Could not grab key 25 with modfield 26: the combination is already grabbed.
+Could not grab key 26 with modfield 8: the combination is already grabbed.
+Could not grab key 26 with modfield 24: the combination is already grabbed.
+Could not grab key 26 with modfield 10: the combination is already grabbed.
+Could not grab key 26 with modfield 26: the combination is already grabbed.
+Could not grab key 65 with modfield 64: the combination is already grabbed.
+Could not grab key 65 with modfield 80: the combination is already grabbed.
+Could not grab key 65 with modfield 66: the combination is already grabbed.
+Could not grab key 65 with modfield 82: the combination is already grabbed.
+Could not grab key 25 with modfield 64: the combination is already grabbed.
+Could not grab key 25 with modfield 80: the combination is already grabbed.
+Could not grab key 25 with modfield 66: the combination is already grabbed.
+Could not grab key 25 with modfield 82: the combination is already grabbed.
+Could not grab key 33 with modfield 64: the combination is already grabbed.
+Could not grab key 33 with modfield 80: the combination is already grabbed.
+Could not grab key 33 with modfield 66: the combination is already grabbed.
+Could not grab key 33 with modfield 82: the combination is already grabbed.
+Could not grab key 24 with modfield 68: the combination is already grabbed.
+Could not grab key 24 with modfield 84: the combination is already grabbed.
+Could not grab key 24 with modfield 70: the combination is already grabbed.
+Could not grab key 24 with modfield 86: the combination is already grabbed.
+Could not grab key 25 with modfield 68: the combination is already grabbed.
+Could not grab key 25 with modfield 84: the combination is already grabbed.
+Could not grab key 25 with modfield 70: the combination is already grabbed.
+Could not grab key 25 with modfield 86: the combination is already grabbed.
+Could not grab key 24 with modfield 64: the combination is already grabbed.
+Could not grab key 24 with modfield 80: the combination is already grabbed.
+Could not grab key 24 with modfield 66: the combination is already grabbed.
+Could not grab key 24 with modfield 82: the combination is already grabbed.
+Could not grab key 25 with modfield 65: the combination is already grabbed.
+Could not grab key 25 with modfield 81: the combination is already grabbed.
+Could not grab key 25 with modfield 67: the combination is already grabbed.
+Could not grab key 25 with modfield 83: the combination is already grabbed.
+Could not grab key 9 with modfield 64: the combination is already grabbed.
+Could not grab key 9 with modfield 80: the combination is already grabbed.
+Could not grab key 9 with modfield 66: the combination is already grabbed.
+Could not grab key 9 with modfield 82: the combination is already grabbed.
+Could not grab key 56 with modfield 65: the combination is already grabbed.
+Could not grab key 56 with modfield 81: the combination is already grabbed.
+Could not grab key 56 with modfield 67: the combination is already grabbed.
+Could not grab key 56 with modfield 83: the combination is already grabbed.
+Could not grab key 56 with modfield 68: the combination is already grabbed.
+Could not grab key 56 with modfield 84: the combination is already grabbed.
+Could not grab key 56 with modfield 70: the combination is already grabbed.
+Could not grab key 56 with modfield 86: the combination is already grabbed.
+Could not grab key 46 with modfield 68: the combination is already grabbed.
+Could not grab key 46 with modfield 84: the combination is already grabbed.
+Could not grab key 46 with modfield 70: the combination is already grabbed.
+Could not grab key 46 with modfield 86: the combination is already grabbed.
+Could not grab key 113 with modfield 64: the combination is already grabbed.
+Could not grab key 113 with modfield 80: the combination is already grabbed.
+Could not grab key 113 with modfield 66: the combination is already grabbed.
+Could not grab key 113 with modfield 82: the combination is already grabbed.
+Could not grab key 114 with modfield 64: the combination is already grabbed.
+Could not grab key 114 with modfield 80: the combination is already grabbed.
+Could not grab key 114 with modfield 66: the combination is already grabbed.
+Could not grab key 114 with modfield 82: the combination is already grabbed.
+Could not grab key 23 with modfield 64: the combination is already grabbed.
+Could not grab key 23 with modfield 80: the combination is already grabbed.
+Could not grab key 23 with modfield 66: the combination is already grabbed.
+Could not grab key 23 with modfield 82: the combination is already grabbed.
+Could not grab key 23 with modfield 8: the combination is already grabbed.
+Could not grab key 23 with modfield 24: the combination is already grabbed.
+Could not grab key 23 with modfield 10: the combination is already grabbed.
+Could not grab key 23 with modfield 26: the combination is already grabbed.
+Could not grab key 39 with modfield 64: the combination is already grabbed.
+Could not grab key 39 with modfield 80: the combination is already grabbed.
+Could not grab key 39 with modfield 66: the combination is already grabbed.
+Could not grab key 39 with modfield 82: the combination is already grabbed.
+Could not grab key 28 with modfield 64: the combination is already grabbed.
+Could not grab key 28 with modfield 80: the combination is already grabbed.
+Could not grab key 28 with modfield 66: the combination is already grabbed.
+Could not grab key 28 with modfield 82: the combination is already grabbed.
+Could not grab key 40 with modfield 64: the combination is already grabbed.
+Could not grab key 40 with modfield 80: the combination is already grabbed.
+Could not grab key 40 with modfield 66: the combination is already grabbed.
+Could not grab key 40 with modfield 82: the combination is already grabbed.
+Could not grab key 28 with modfield 65: the combination is already grabbed.
+Could not grab key 28 with modfield 81: the combination is already grabbed.
+Could not grab key 28 with modfield 67: the combination is already grabbed.
+Could not grab key 28 with modfield 83: the combination is already grabbed.
+Could not grab key 38 with modfield 64: the combination is already grabbed.
+Could not grab key 38 with modfield 80: the combination is already grabbed.
+Could not grab key 38 with modfield 66: the combination is already grabbed.
+Could not grab key 38 with modfield 82: the combination is already grabbed.
+Could not grab key 41 with modfield 64: the combination is already grabbed.
+Could not grab key 41 with modfield 80: the combination is already grabbed.
+Could not grab key 41 with modfield 66: the combination is already grabbed.
+Could not grab key 41 with modfield 82: the combination is already grabbed.
+Could not grab key 58 with modfield 68: the combination is already grabbed.
+Could not grab key 58 with modfield 84: the combination is already grabbed.
+Could not grab key 58 with modfield 70: the combination is already grabbed.
+Could not grab key 58 with modfield 86: the combination is already grabbed.
+Could not grab key 53 with modfield 68: the combination is already grabbed.
+Could not grab key 53 with modfield 84: the combination is already grabbed.
+Could not grab key 53 with modfield 70: the combination is already grabbed.
+Could not grab key 53 with modfield 86: the combination is already grabbed.
+Could not grab key 29 with modfield 68: the combination is already grabbed.
+Could not grab key 29 with modfield 84: the combination is already grabbed.
+Could not grab key 29 with modfield 70: the combination is already grabbed.
+Could not grab key 29 with modfield 86: the combination is already grabbed.
+Could not grab key 52 with modfield 68: the combination is already grabbed.
+Could not grab key 52 with modfield 84: the combination is already grabbed.
+Could not grab key 52 with modfield 70: the combination is already grabbed.
+Could not grab key 52 with modfield 86: the combination is already grabbed.
+Could not grab key 44 with modfield 68: the combination is already grabbed.
+Could not grab key 44 with modfield 84: the combination is already grabbed.
+Could not grab key 44 with modfield 70: the combination is already grabbed.
+Could not grab key 44 with modfield 86: the combination is already grabbed.
+Could not grab key 46 with modfield 68: the combination is already grabbed.
+Could not grab key 46 with modfield 84: the combination is already grabbed.
+Could not grab key 46 with modfield 70: the combination is already grabbed.
+Could not grab key 46 with modfield 86: the combination is already grabbed.
+Could not grab key 44 with modfield 64: the combination is already grabbed.
+Could not grab key 44 with modfield 80: the combination is already grabbed.
+Could not grab key 44 with modfield 66: the combination is already grabbed.
+Could not grab key 44 with modfield 82: the combination is already grabbed.
+Could not grab key 45 with modfield 64: the combination is already grabbed.
+Could not grab key 45 with modfield 80: the combination is already grabbed.
+Could not grab key 45 with modfield 66: the combination is already grabbed.
+Could not grab key 45 with modfield 82: the combination is already grabbed.
+Could not grab key 31 with modfield 64: the combination is already grabbed.
+Could not grab key 31 with modfield 80: the combination is already grabbed.
+Could not grab key 31 with modfield 66: the combination is already grabbed.
+Could not grab key 31 with modfield 82: the combination is already grabbed.
+Could not grab key 46 with modfield 64: the combination is already grabbed.
+Could not grab key 46 with modfield 80: the combination is already grabbed.
+Could not grab key 46 with modfield 66: the combination is already grabbed.
+Could not grab key 46 with modfield 82: the combination is already grabbed.
+Could not grab key 44 with modfield 64: the combination is already grabbed.
+Could not grab key 44 with modfield 80: the combination is already grabbed.
+Could not grab key 44 with modfield 66: the combination is already grabbed.
+Could not grab key 44 with modfield 82: the combination is already grabbed.
+Could not grab key 44 with modfield 65: the combination is already grabbed.
+Could not grab key 44 with modfield 81: the combination is already grabbed.
+Could not grab key 44 with modfield 67: the combination is already grabbed.
+Could not grab key 44 with modfield 83: the combination is already grabbed.
+Could not grab key 45 with modfield 64: the combination is already grabbed.
+Could not grab key 45 with modfield 80: the combination is already grabbed.
+Could not grab key 45 with modfield 66: the combination is already grabbed.
+Could not grab key 45 with modfield 82: the combination is already grabbed.
+Could not grab key 45 with modfield 65: the combination is already grabbed.
+Could not grab key 45 with modfield 81: the combination is already grabbed.
+Could not grab key 45 with modfield 67: the combination is already grabbed.
+Could not grab key 45 with modfield 83: the combination is already grabbed.
+Could not grab key 31 with modfield 64: the combination is already grabbed.
+Could not grab key 31 with modfield 80: the combination is already grabbed.
+Could not grab key 31 with modfield 66: the combination is already grabbed.
+Could not grab key 31 with modfield 82: the combination is already grabbed.
+Could not grab key 31 with modfield 65: the combination is already grabbed.
+Could not grab key 31 with modfield 81: the combination is already grabbed.
+Could not grab key 31 with modfield 67: the combination is already grabbed.
+Could not grab key 31 with modfield 83: the combination is already grabbed.
+Could not grab key 46 with modfield 64: the combination is already grabbed.
+Could not grab key 46 with modfield 80: the combination is already grabbed.
+Could not grab key 46 with modfield 66: the combination is already grabbed.
+Could not grab key 46 with modfield 82: the combination is already grabbed.
+Could not grab key 46 with modfield 65: the combination is already grabbed.
+Could not grab key 46 with modfield 81: the combination is already grabbed.
+Could not grab key 46 with modfield 67: the combination is already grabbed.
+Could not grab key 46 with modfield 83: the combination is already grabbed.
+Could not grab key 32 with modfield 64: the combination is already grabbed.
+Could not grab key 32 with modfield 80: the combination is already grabbed.
+Could not grab key 32 with modfield 66: the combination is already grabbed.
+Could not grab key 32 with modfield 82: the combination is already grabbed.
+Could not grab key 31 with modfield 64: the combination is already grabbed.
+Could not grab key 31 with modfield 80: the combination is already grabbed.
+Could not grab key 31 with modfield 66: the combination is already grabbed.
+Could not grab key 31 with modfield 82: the combination is already grabbed.
+Could not grab key 10 with modfield 64: the combination is already grabbed.
+Could not grab key 10 with modfield 80: the combination is already grabbed.
+Could not grab key 10 with modfield 66: the combination is already grabbed.
+Could not grab key 10 with modfield 82: the combination is already grabbed.
+Could not grab key 10 with modfield 65: the combination is already grabbed.
+Could not grab key 10 with modfield 81: the combination is already grabbed.
+Could not grab key 10 with modfield 67: the combination is already grabbed.
+Could not grab key 10 with modfield 83: the combination is already grabbed.
+Could not grab key 11 with modfield 64: the combination is already grabbed.
+Could not grab key 11 with modfield 80: the combination is already grabbed.
+Could not grab key 11 with modfield 66: the combination is already grabbed.
+Could not grab key 11 with modfield 82: the combination is already grabbed.
+Could not grab key 11 with modfield 65: the combination is already grabbed.
+Could not grab key 11 with modfield 81: the combination is already grabbed.
+Could not grab key 11 with modfield 67: the combination is already grabbed.
+Could not grab key 11 with modfield 83: the combination is already grabbed.
+Could not grab key 12 with modfield 64: the combination is already grabbed.
+Could not grab key 12 with modfield 80: the combination is already grabbed.
+Could not grab key 12 with modfield 66: the combination is already grabbed.
+Could not grab key 12 with modfield 82: the combination is already grabbed.
+Could not grab key 12 with modfield 65: the combination is already grabbed.
+Could not grab key 12 with modfield 81: the combination is already grabbed.
+Could not grab key 12 with modfield 67: the combination is already grabbed.
+Could not grab key 12 with modfield 83: the combination is already grabbed.
+Could not grab key 13 with modfield 64: the combination is already grabbed.
+Could not grab key 13 with modfield 80: the combination is already grabbed.
+Could not grab key 13 with modfield 66: the combination is already grabbed.
+Could not grab key 13 with modfield 82: the combination is already grabbed.
+Could not grab key 13 with modfield 65: the combination is already grabbed.
+Could not grab key 13 with modfield 81: the combination is already grabbed.
+Could not grab key 13 with modfield 67: the combination is already grabbed.
+Could not grab key 13 with modfield 83: the combination is already grabbed.
+Could not grab key 14 with modfield 64: the combination is already grabbed.
+Could not grab key 14 with modfield 80: the combination is already grabbed.
+Could not grab key 14 with modfield 66: the combination is already grabbed.
+Could not grab key 14 with modfield 82: the combination is already grabbed.
+Could not grab key 14 with modfield 65: the combination is already grabbed.
+Could not grab key 14 with modfield 81: the combination is already grabbed.
+Could not grab key 14 with modfield 67: the combination is already grabbed.
+Could not grab key 14 with modfield 83: the combination is already grabbed.
+Could not grab key 15 with modfield 64: the combination is already grabbed.
+Could not grab key 15 with modfield 80: the combination is already grabbed.
+Could not grab key 15 with modfield 66: the combination is already grabbed.
+Could not grab key 15 with modfield 82: the combination is already grabbed.
+Could not grab key 15 with modfield 65: the combination is already grabbed.
+Could not grab key 15 with modfield 81: the combination is already grabbed.
+Could not grab key 15 with modfield 67: the combination is already grabbed.
+Could not grab key 15 with modfield 83: the combination is already grabbed.
+Could not grab key 16 with modfield 64: the combination is already grabbed.
+Could not grab key 16 with modfield 80: the combination is already grabbed.
+Could not grab key 16 with modfield 66: the combination is already grabbed.
+Could not grab key 16 with modfield 82: the combination is already grabbed.
+Could not grab key 16 with modfield 65: the combination is already grabbed.
+Could not grab key 16 with modfield 81: the combination is already grabbed.
+Could not grab key 16 with modfield 67: the combination is already grabbed.
+Could not grab key 16 with modfield 83: the combination is already grabbed.
+Could not grab key 17 with modfield 64: the combination is already grabbed.
+Could not grab key 17 with modfield 80: the combination is already grabbed.
+Could not grab key 17 with modfield 66: the combination is already grabbed.
+Could not grab key 17 with modfield 82: the combination is already grabbed.
+Could not grab key 17 with modfield 65: the combination is already grabbed.
+Could not grab key 17 with modfield 81: the combination is already grabbed.
+Could not grab key 17 with modfield 67: the combination is already grabbed.
+Could not grab key 17 with modfield 83: the combination is already grabbed.
+Could not grab key 18 with modfield 64: the combination is already grabbed.
+Could not grab key 18 with modfield 80: the combination is already grabbed.
+Could not grab key 18 with modfield 66: the combination is already grabbed.
+Could not grab key 18 with modfield 82: the combination is already grabbed.
+Could not grab key 18 with modfield 65: the combination is already grabbed.
+Could not grab key 18 with modfield 81: the combination is already grabbed.
+Could not grab key 18 with modfield 67: the combination is already grabbed.
+Could not grab key 18 with modfield 83: the combination is already grabbed.
+Could not grab key 19 with modfield 64: the combination is already grabbed.
+Could not grab key 19 with modfield 80: the combination is already grabbed.
+Could not grab key 19 with modfield 66: the combination is already grabbed.
+Could not grab key 19 with modfield 82: the combination is already grabbed.
+Could not grab key 19 with modfield 65: the combination is already grabbed.
+Could not grab key 19 with modfield 81: the combination is already grabbed.
+Could not grab key 19 with modfield 67: the combination is already grabbed.
+Could not grab key 19 with modfield 83: the combination is already grabbed.
+Could not grab key 44 with modfield 65: the combination is already grabbed.
+Could not grab key 44 with modfield 81: the combination is already grabbed.
+Could not grab key 44 with modfield 67: the combination is already grabbed.
+Could not grab key 44 with modfield 83: the combination is already grabbed.
+Could not grab key 45 with modfield 65: the combination is already grabbed.
+Could not grab key 45 with modfield 81: the combination is already grabbed.
+Could not grab key 45 with modfield 67: the combination is already grabbed.
+Could not grab key 45 with modfield 83: the combination is already grabbed.
+Could not grab key 31 with modfield 65: the combination is already grabbed.
+Could not grab key 31 with modfield 81: the combination is already grabbed.
+Could not grab key 31 with modfield 67: the combination is already grabbed.
+Could not grab key 31 with modfield 83: the combination is already grabbed.
+Could not grab key 46 with modfield 65: the combination is already grabbed.
+Could not grab key 46 with modfield 81: the combination is already grabbed.
+Could not grab key 46 with modfield 67: the combination is already grabbed.
+Could not grab key 46 with modfield 83: the combination is already grabbed.
+Could not grab key 44 with modfield 72: the combination is already grabbed.
+Could not grab key 44 with modfield 88: the combination is already grabbed.
+Could not grab key 44 with modfield 74: the combination is already grabbed.
+Could not grab key 44 with modfield 90: the combination is already grabbed.
+Could not grab key 45 with modfield 72: the combination is already grabbed.
+Could not grab key 45 with modfield 88: the combination is already grabbed.
+Could not grab key 45 with modfield 74: the combination is already grabbed.
+Could not grab key 45 with modfield 90: the combination is already grabbed.
+Could not grab key 31 with modfield 72: the combination is already grabbed.
+Could not grab key 31 with modfield 88: the combination is already grabbed.
+Could not grab key 31 with modfield 74: the combination is already grabbed.
+Could not grab key 31 with modfield 90: the combination is already grabbed.
+Could not grab key 46 with modfield 72: the combination is already grabbed.
+Could not grab key 46 with modfield 88: the combination is already grabbed.
+Could not grab key 46 with modfield 74: the combination is already grabbed.
+Could not grab key 46 with modfield 90: the combination is already grabbed.
+Could not grab key 35 with modfield 68: the combination is already grabbed.
+Could not grab key 35 with modfield 84: the combination is already grabbed.
+Could not grab key 35 with modfield 70: the combination is already grabbed.
+Could not grab key 35 with modfield 86: the combination is already grabbed.
+Could not grab key 61 with modfield 68: the combination is already grabbed.
+Could not grab key 61 with modfield 84: the combination is already grabbed.
+Could not grab key 61 with modfield 70: the combination is already grabbed.
+Could not grab key 61 with modfield 86: the combination is already grabbed.
+Could not grab key 56 with modfield 72: the combination is already grabbed.
+Could not grab key 56 with modfield 88: the combination is already grabbed.
+Could not grab key 56 with modfield 74: the combination is already grabbed.
+Could not grab key 56 with modfield 90: the combination is already grabbed.
+Could not grab key 113 with modfield 76: the combination is already grabbed.
+Could not grab key 113 with modfield 92: the combination is already grabbed.
+Could not grab key 113 with modfield 78: the combination is already grabbed.
+Could not grab key 113 with modfield 94: the combination is already grabbed.
+Could not grab key 116 with modfield 76: the combination is already grabbed.
+Could not grab key 116 with modfield 92: the combination is already grabbed.
+Could not grab key 116 with modfield 78: the combination is already grabbed.
+Could not grab key 116 with modfield 94: the combination is already grabbed.
+Could not grab key 111 with modfield 76: the combination is already grabbed.
+Could not grab key 111 with modfield 92: the combination is already grabbed.
+Could not grab key 111 with modfield 78: the combination is already grabbed.
+Could not grab key 111 with modfield 94: the combination is already grabbed.
+Could not grab key 114 with modfield 76: the combination is already grabbed.
+Could not grab key 114 with modfield 92: the combination is already grabbed.
+Could not grab key 114 with modfield 78: the combination is already grabbed.
+Could not grab key 114 with modfield 94: the combination is already grabbed.
+Could not grab key 10 with modfield 68: the combination is already grabbed.
+Could not grab key 10 with modfield 84: the combination is already grabbed.
+Could not grab key 10 with modfield 70: the combination is already grabbed.
+Could not grab key 10 with modfield 86: the combination is already grabbed.
+Could not grab key 11 with modfield 68: the combination is already grabbed.
+Could not grab key 11 with modfield 84: the combination is already grabbed.
+Could not grab key 11 with modfield 70: the combination is already grabbed.
+Could not grab key 11 with modfield 86: the combination is already grabbed.
+Could not grab key 12 with modfield 68: the combination is already grabbed.
+Could not grab key 12 with modfield 84: the combination is already grabbed.
+Could not grab key 12 with modfield 70: the combination is already grabbed.
+Could not grab key 12 with modfield 86: the combination is already grabbed.
+Could not grab key 13 with modfield 68: the combination is already grabbed.
+Could not grab key 13 with modfield 84: the combination is already grabbed.
+Could not grab key 13 with modfield 70: the combination is already grabbed.
+Could not grab key 13 with modfield 86: the combination is already grabbed.
+Could not grab key 14 with modfield 68: the combination is already grabbed.
+Could not grab key 14 with modfield 84: the combination is already grabbed.
+Could not grab key 14 with modfield 70: the combination is already grabbed.
+Could not grab key 14 with modfield 86: the combination is already grabbed.
+Could not grab key 15 with modfield 68: the combination is already grabbed.
+Could not grab key 15 with modfield 84: the combination is already grabbed.
+Could not grab key 15 with modfield 70: the combination is already grabbed.
+Could not grab key 15 with modfield 86: the combination is already grabbed.
+Could not grab key 16 with modfield 68: the combination is already grabbed.
+Could not grab key 16 with modfield 84: the combination is already grabbed.
+Could not grab key 16 with modfield 70: the combination is already grabbed.
+Could not grab key 16 with modfield 86: the combination is already grabbed.
+Could not grab key 17 with modfield 68: the combination is already grabbed.
+Could not grab key 17 with modfield 84: the combination is already grabbed.
+Could not grab key 17 with modfield 70: the combination is already grabbed.
+Could not grab key 17 with modfield 86: the combination is already grabbed.
+Could not grab key 18 with modfield 68: the combination is already grabbed.
+Could not grab key 18 with modfield 84: the combination is already grabbed.
+Could not grab key 18 with modfield 70: the combination is already grabbed.
+Could not grab key 18 with modfield 86: the combination is already grabbed.
+Could not grab key 65 with modfield 68: the combination is already grabbed.
+Could not grab key 65 with modfield 84: the combination is already grabbed.
+Could not grab key 65 with modfield 70: the combination is already grabbed.
+Could not grab key 65 with modfield 86: the combination is already grabbed.
+Could not grab key 65 with modfield 76: the combination is already grabbed.
+Could not grab key 65 with modfield 92: the combination is already grabbed.
+Could not grab key 65 with modfield 78: the combination is already grabbed.
+Could not grab key 65 with modfield 94: the combination is already grabbed.
+Could not grab key 122 with modfield 0: the combination is already grabbed.
+Could not grab key 122 with modfield 16: the combination is already grabbed.
+Could not grab key 122 with modfield 2: the combination is already grabbed.
+Could not grab key 122 with modfield 18: the combination is already grabbed.
+Could not grab key 121 with modfield 0: the combination is already grabbed.
+Could not grab key 121 with modfield 16: the combination is already grabbed.
+Could not grab key 121 with modfield 2: the combination is already grabbed.
+Could not grab key 121 with modfield 18: the combination is already grabbed.
+Could not grab key 123 with modfield 0: the combination is already grabbed.
+Could not grab key 123 with modfield 16: the combination is already grabbed.
+Could not grab key 123 with modfield 2: the combination is already grabbed.
+Could not grab key 123 with modfield 18: the combination is already grabbed.
+Could not grab key 233 with modfield 0: the combination is already grabbed.
+Could not grab key 233 with modfield 16: the combination is already grabbed.
+Could not grab key 233 with modfield 2: the combination is already grabbed.
+Could not grab key 233 with modfield 18: the combination is already grabbed.
+Could not grab key 232 with modfield 0: the combination is already grabbed.
+Could not grab key 232 with modfield 16: the combination is already grabbed.
+Could not grab key 232 with modfield 2: the combination is already grabbed.
+Could not grab key 232 with modfield 18: the combination is already grabbed.
+Could not grab key 33 with modfield 72: the combination is already grabbed.
+Could not grab key 33 with modfield 88: the combination is already grabbed.
+Could not grab key 33 with modfield 74: the combination is already grabbed.
+Could not grab key 33 with modfield 90: the combination is already grabbed.
+Could not grab key 39 with modfield 65: the combination is already grabbed.
+Could not grab key 39 with modfield 81: the combination is already grabbed.
+Could not grab key 39 with modfield 67: the combination is already grabbed.
+Could not grab key 39 with modfield 83: the combination is already grabbed.
+polybar|error: Disabling module "battery" (reason: No suitable way to get current charge state)
+polybar|error: Disabling module "battery" (reason: No suitable way to get current charge state)
+polybar|error: Disabling module "network-wireless" (reason: Invalid network interface "wlo1")
+polybar|error: Disabling module "network-wireless" (reason: Invalid network interface "wlo1")
+
+(polkit-gnome-authentication-agent-1:2114): GLib-CRITICAL **: 07:58:29.652: g_variant_new_string: assertion 'string != NULL' failed
+
+(polkit-gnome-authentication-agent-1:2114): polkit-gnome-1-WARNING **: 07:58:29.652: Failed to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+Cannot resolve epoptes-aula.local, will keep retrying.
+Parent pid 3258, child pid 3259
+Child process initialized in 8.30 ms
+[8:8:0121/075910.848524:ERROR:chrome/browser/ui/views/user_education/impl/browser_user_education_interface_impl.cc:154] Attempting to show IPH IPH_DiscardRing before browser initialization complete; IPH will not be shown.
+[8:8:0121/075910.939095:ERROR:dbus/object_proxy.cc:573] Failed to call method: org.freedesktop.systemd1.Manager.StartTransientUnit: object_path= /org/freedesktop/systemd1: org.freedesktop.DBus.Error.InvalidArgs: Process 8 is a kernel thread, refusing.
+[49:55:0121/075916.384200:ERROR:net/socket/ssl_client_socket_impl.cc:916] handshake failed; returned -1, SSL error code 1, net_error -184
+
+(nemo:15950): Nemo-WARNING **: 08:05:42.757: Current gtk theme is not known to have nemo support (Catppuccin-Mocha-Standard-Mauve-Dark) - checking...
+Traceback (most recent call last):
+  File "/usr/share/nemo-python/extensions/folder-color.py", line 16, in <module>
+    gi.require_version("Gtk", "4.0")
+  File "/usr/lib/python3/dist-packages/gi/__init__.py", line 113, in require_version
+    raise ValueError('Namespace %s is already loaded with version %s' %
+ValueError: Namespace Gtk is already loaded with version 3.0
+Nemo-Share-Message: 08:05:44.103: Called "net usershare info" but it failed: «net usershare» ha devuelto el error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+Qt WARNING: Cannot create accessible child interface for object:  QITreeView(0x59fde7ac8760)  index:  0
+Qt WARNING: Cannot create accessible child interface for object:  QITreeView(0x59fde7ac8760)  index:  0
+Qt WARNING: Cannot create accessible child interface for object:  QITreeView(0x59fde7ac8760)  index:  0
+Qt WARNING: Cannot create accessible child interface for object:  QITreeView(0x59fde7ac8760)  index:  1
+Qt WARNING: Cannot create accessible child interface for object:  QITreeView(0x59fde7ac8760)  index:  1
+Qt WARNING: Cannot create accessible child interface for object:  QITreeView(0x59fde7ac8760)  index:  1
+
+(nemo:43627): Nemo-WARNING **: 08:21:37.055: Current gtk theme is not known to have nemo support (Catppuccin-Mocha-Standard-Mauve-Dark) - checking...
+Traceback (most recent call last):
+  File "/usr/share/nemo-python/extensions/folder-color.py", line 16, in <module>
+    gi.require_version("Gtk", "4.0")
+  File "/usr/lib/python3/dist-packages/gi/__init__.py", line 113, in require_version
+    raise ValueError('Namespace %s is already loaded with version %s' %
+ValueError: Namespace Gtk is already loaded with version 3.0
+Nemo-Share-Message: 08:21:37.670: Called "net usershare info" but it failed: «net usershare» ha devuelto el error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+Epoptes-client connecting to epoptes-aula.local:789...2026/01/21 08:32:23 socat[2051] W OpenSSL: Warning: this implementation does not check CRLs
+   ...done
+[49:55:0121/083538.775671:ERROR:net/socket/ssl_client_socket_impl.cc:916] handshake failed; returned -1, SSL error code 1, net_error -202
+epoptes-client got signal: 0, relaunching...
+Cannot resolve epoptes-aula.local, will keep retrying.
+
+(nemo:82446): Nemo-WARNING **: 08:43:55.024: Current gtk theme is not known to have nemo support (Catppuccin-Mocha-Standard-Mauve-Dark) - checking...
+Traceback (most recent call last):
+  File "/usr/share/nemo-python/extensions/folder-color.py", line 16, in <module>
+    gi.require_version("Gtk", "4.0")
+  File "/usr/lib/python3/dist-packages/gi/__init__.py", line 113, in require_version
+    raise ValueError('Namespace %s is already loaded with version %s' %
+ValueError: Namespace Gtk is already loaded with version 3.0
+Nemo-Share-Message: 08:43:55.653: Called "net usershare info" but it failed: «net usershare» ha devuelto el error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+[8:8:0121/085314.523201:ERROR:CONSOLE:1] "Error retrieving backup results: [object Object]", source: chrome-extension://mnojpmjdmbbfmejpflffifhffcmidifd/out/brave_web-discovery-project_index_js.chunk.js (1)
+[021 09:17:29.911143] Ignoring unknown config key: cursor_trail
+[49:55:0121/091753.835046:ERROR:net/socket/ssl_client_socket_impl.cc:916] handshake failed; returned -1, SSL error code 1, net_error -202
+Epoptes-client connecting to epoptes-aula.local:789...2026/01/21 09:30:25 socat[70234] W OpenSSL: Warning: this implementation does not check CRLs
+   ...done
+epoptes-client got signal: 0, relaunching...
+Cannot resolve epoptes-aula.local, will keep retrying.
+No player could handle this command
+Parent pid 193805, child pid 193806
+Warning: not remounting /var/lib/docker/overlay2/154b82dbeb458e126c2682eab0d4cd1f042dce5d20802d97720fd3e2da7eae33/merged
+Warning: not remounting /var/lib/docker/overlay2/154b82dbeb458e126c2682eab0d4cd1f042dce5d20802d97720fd3e2da7eae33/merged
+Child process initialized in 4.51 ms
+Se está abriendo en una sesión de navegador existente.
+
+Parent is shutting down, bye...
+[8:8:0121/094916.912684:ERROR:chrome/browser/ui/views/user_education/impl/browser_user_education_interface_impl.cc:154] Attempting to show IPH IPH_DiscardRing before browser initialization complete; IPH will not be shown.
+[49:55:0121/094919.996391:ERROR:net/socket/ssl_client_socket_impl.cc:916] handshake failed; returned -1, SSL error code 1, net_error -202
+
+(process:202748): GLib-CRITICAL **: 09:54:24.195: g_string_insert_len: assertion 'len == 0 || val != NULL' failed
+[021 09:58:45.353233] Ignoring unknown config key: cursor_trail
+qt.qpa.clipboard: QXcbClipboard::setMimeData: Cannot set X11 selection owner
+
+(nemo:220624): Nemo-WARNING **: 10:00:56.484: Current gtk theme is not known to have nemo support (Catppuccin-Mocha-Standard-Mauve-Dark) - checking...
+Traceback (most recent call last):
+  File "/usr/share/nemo-python/extensions/folder-color.py", line 16, in <module>
+    gi.require_version("Gtk", "4.0")
+  File "/usr/lib/python3/dist-packages/gi/__init__.py", line 113, in require_version
+    raise ValueError('Namespace %s is already loaded with version %s' %
+ValueError: Namespace Gtk is already loaded with version 3.0
+Nemo-Share-Message: 10:00:57.021: Called "net usershare info" but it failed: «net usershare» ha devuelto el error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+Nemo-Share-Message: 10:01:11.456: Called "net usershare info" but it failed: «net usershare» ha devuelto el error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+
+(nemo:220624): Nemo-WARNING **: 10:01:24.958: Could not inhibit power management: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.gnome.SessionManager" does not exist

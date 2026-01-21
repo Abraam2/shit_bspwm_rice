@@ -1,0 +1,15 @@
+# ~/.dircolors - Simplificado, tema azul suave
+
+NORMAL 00
+FILE 00
+
+# Carpetas
+DIR 01;38;2;137;220;235       # Azul pastel negrita (#89dceb)
+
+# Archivos normales
+FILE 38;2;116;199;236         # Azul suave (#74c7ec)
+.* 38;2;116;199;236           # Archivos ocultos igual que normales
+
+# Enlaces
+LINK 01;38;2;137;220;235      # Azul pastel negrita (#89dceb)
+

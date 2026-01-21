@@ -1,0 +1,242 @@
+
+##########################################################
+#                      APLICACIONES                      #
+##########################################################
+
+pgrep -x sxhkd >/dev/null || sxhkd &
+
+# Terminal
+super + Return
+    kitty
+
+# Terminal flotante
+super + shift + Return
+    GatitoFlotante
+
+# Terminal de arriba
+super + ctrl + Return
+    Bspwm-ScratchPad
+
+# Explorador de archivos
+super + e
+	nemo
+
+# VsCode
+alt + w
+    code
+
+# Virtualbox
+alt + e
+    virtualbox
+
+# Lanzador de aplicaciones
+super + @space
+    RofiLauncher --launcher
+
+# Selector de temas
+alt + @space
+	RiceSelector
+
+# Navegador web
+super + w
+    firejail --noprofile /usr/bin/brave-browser --force-device-scale-factor=1.2 --password-store=basic
+
+# Power Menu
+super + p
+    powermenu_t3
+
+# Power Menu
+super + ctrl + q
+    powermenu_t3
+
+# Selector de fondo de pantalla
+super + ctrl + w
+    WallSelect
+
+# Fondo aleatorio
+super + alt + w
+	feh -z --no-fehbg --bg-fill ~/.config/bspwm/themes/$RICETHEME/walls/
+
+# Ayuda / Keybindings
+super + h
+    KeybindingsHelp
+
+
+##########################################################
+#                  SISTEMA Y UTILIDADES                  #
+##########################################################
+
+# Recargar configuración de sxhkd
+super + Escape
+    pkill -USR1 -x sxhkd
+
+# Reiniciar Polybar
+super + shift + b
+    pkill polybar && sleep 1 && bash ~/.config/polybar/ghost/Bar.bash
+
+# Sacar Polybar
+super + ctrl + shift + b
+    bash -c "~/.config/polybar/ghost/Bar.bash"
+
+# Esconder polybar 
+
+super + ctrl +b
+    pkill polybar
+    
+# Bloquear pantalla 
+super + ctrl + l
+    ScreenLocker -r
+
+# Cambiar de escritorio
+super + {Left,Right}
+	bspc desktop -f {prev,next}
+
+
+# Enfocar el último escritorio
+super + Tab
+	bspc desktop -f last 
+
+# Selector de ventana (Alt+Tab estilo Windows)
+alt + Tab
+    rofi \
+        -theme $HOME/.config/bspwm/config/rofi-themes/Windows.rasi \
+        -show window -window-thumbnail \
+        -window-hide-active-window true \
+        -kb-accept-entry "!Alt-Tab,Return" \
+        -kb-element-next "Alt-Tab" \
+        #-rofi -show window -auto-select \
+
+# Reload BSPWM
+super + alt + r
+	bspc wm -r
+
+##########################################################
+#              GESTIÓN DE VENTANAS Y LAYOUTS             #
+##########################################################
+
+# Cerrar / matar ventana
+super + {_,shift + }q
+    bspc node -{c,k}
+
+# Cambiar entre layout tiled y monocle
+super + s
+    bspc desktop -l next
+
+# Cambiar tipo de ventana
+super + t
+    bspc node -t tiled
+super + d
+    bspc node -t tiled
+super + shift + t
+    bspc node -t pseudo_tiled
+super + a
+    bspc node -t floating
+super + f
+    bspc node -t fullscreen
+
+
+# Marcar / bloquear / hacer sticky / privado
+super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+
+
+# Send focused Node to workspace directionally
+super + ctrl + {j,l}
+	bspc node -d {prev,next} '--follow'
+
+# Mover foco entre ventanas según posición del teclado
+super + j
+    bspc node -f west
+super + k
+    bspc node -f south
+super + i
+    bspc node -f north
+super + l
+    bspc node -f east
+
+
+##########################################################
+#                   MOVIMIENTO Y FOCO                    #
+##########################################################
+
+# Mover foco o intercambiar ventana
+super + {_,shift + }{j,k,i,l}
+    bspc node -{f,s} {west,south,north,east}
+
+
+# Enfocar nodo anterior o posterior en el historial
+super + {o,i}
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
+
+# Enfocar o enviar a escritorio específico
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Mover ventana flotante
+super + shift + {j,k,i,l}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Redimensionar ventana
+super + alt + {j,k,i,l}
+    $HOME/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
+
+# increase/decrease FLOATING node size (zoom in/out)
+super + ctrl + {plus,minus}
+	{ \
+	  xdotool getactivewindow windowmove --relative -- -50 -25 ; xdo resize -w +100 -h +50; \
+	, xdotool getactivewindow windowmove --relative -- +50 +25 ; xdo resize -w -100 -h -50; \
+	}
+
+# balance desktop's nodes
+super + alt + b
+  bspc node @/ -B
+
+##########################################################
+#               PRESELECCIÓN Y MANIPULACIÓN              #
+##########################################################
+
+# Preseleccionar dirección
+super + ctrl + alt + {Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
+
+# Preseleccionar ratio
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# Cancelar preselección del nodo
+super + ctrl + space
+    bspc node -p cancel
+
+# Cancelar preselección del escritorio
+super + ctrl + alt + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+##########################################################
+#               VOLUMEN / BRILLO / CAPTURAS              #
+##########################################################
+
+# Volumen
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Brillo
+XF86AudioRaiseVolume 
+    bash ~/.config/bspwm/scripts/volumen_100_limit.sh
+XF86MonBrightnessUp
+    brightnessctl set +5%
+XF86MonBrightnessDown
+    brightnessctl set 5%-
+
+# Capturas de pantalla
+super + alt + p
+    flameshot gui -p ~/Imágenes
+super + shift + s
+    env DISPLAY=$DISPLAY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR flameshot gui
+```
+
+

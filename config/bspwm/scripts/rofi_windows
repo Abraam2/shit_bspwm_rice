@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+
+    rofi -show window -window-thumbnail \
+        -theme "$HOME/.config/bspwm/config/rofi-themes/Windows.rasi" \
+        -window-hide-active-window true \
+        -kb-accept-entry "!Alt-Tab,Return" \
+        -kb-element-next "Tab"
+        

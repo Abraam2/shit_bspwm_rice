@@ -1,0 +1,18 @@
++ bspc monitor -d 1 2 3
++ bspc config border_width 2
++ bspc config window_gap 10
++ bspc config split_ratio 0.5
++ pgrep -x sxhkd
++ /home/batoi/.fehbg
++ sxhkd -c /home/batoi/.config/bspwm/sxhkdrc
++ bash /home/batoi/.config/polybar/ghost/Bar.bash
+polybar|error: Disabling module "network-wired" (reason: Invalid network interface "eno1")
+
+(nemo:2314): Nemo-WARNING **: 19:57:08.027: Current gtk theme is not known to have nemo support (Catppuccin-Mocha-Standard-Lavender-Dark) - checking...
+Nemo-Share-Message: 19:57:10.059: Called "net usershare info" but it failed: «net usershare» ha devuelto el error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No existe el archivo o el directorio
+Please ask your system administrator to enable user sharing.
+
+
+(nemo:2314): Nemo-WARNING **: 19:57:16.458: Could not inhibit power management: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.gnome.SessionManager" does not exist
+[305 19:57:28.229173] Ignoring unknown config key: cursor_trail
+[305 19:57:28.581903] Failed to enable transparency. This happens when your desktop environment does not support compositing.

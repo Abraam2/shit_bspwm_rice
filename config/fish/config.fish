@@ -1,0 +1,5 @@
+
+# Cargar todos los módulos desde config.d
+for file in ~/.config/fish/config.d/*.fish
+    source $file
+end

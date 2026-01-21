@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+
+awk '
+/^#/ { last = $0; next }
+/^[a-z]/ && last {
+    print $0 "\t" last
+    last = ""
+}
+' ~/.config/bspwm/sxhkdrc \
+| column -t -s $'\t' \
+| rofi -dmenu -i -no-show-icons -width 1100 -lines 20 -theme ~/.config/rofi/launchers/type-3/style-8.rasi
+

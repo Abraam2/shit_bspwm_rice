@@ -1,0 +1,237 @@
+#!/usr/bin/env bash
+# =============================================================
+# BSPWM startup script - Ordenado y documentado
+# Autor: Lord McLovin (Brillante Señor)
+# Descripción:
+#   Inicia todos los servicios necesarios para BSPWM
+#   en orden correcto y con control de procesos duplicados.
+# Log: ~/.config/bspwm/bspwm.log
+# =============================================================
+
+# --- Redirigir salida a log ---
+exec > ~/.config/bspwm/bspwm.log 2>&1
+set -x
+
+# Conectar sesión gráfica con epoptes
+/usr/sbin/epoptes-client &
+
+# =============================================================
+# 🌄 PANTALLA
+# =============================================================
+
+# Fondo aleatorio desde ~/Fondos
+#feh -z --no-fehbg --bg-fill ~/Fondos &
+
+# Restaurar fondo de pantalla
+~/.fehbg
+
+# Desactivar apagado de pantalla y salvapantallas
+xset s off -dpms &
+
+# Color de la pantalla
+redshift &
+
+
+# =============================================================
+# 🧩 VARIABLES DE ENTORNO Y CONFIGURACIONES GLOBALES
+# =============================================================
+
+# Temas y demás
+export QT_QPA_PLATFORMTHEME=qt6ct
+
+# export QT_STYLE_OVERRIDE=kvantum
+
+# Fix para aplicaciones Java
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Añadir scripts personalizados al PATH
+PATH="$HOME/.config/bspwm/scripts:$PATH"
+PATH="$HOME/.config/rofi/scripts:$PATH"
+
+# Cargar nombre del rice/tema actual
+read -r RICETHEME < "$HOME"/.config/bspwm/.rice
+export RICETHEME
+rice_dir="$HOME/.config/bspwm/themes/$RICETHEME"
+
+export PULSE_SERVER=unix:/run/user/$UID/pulse/native
+
+export GTK_USE_PORTAL=1
+export XDG_CURRENT_DESKTOP=X-Cinnamon
+export XDG_SESSION_TYPE=x11
+export XDG_DESKTOP_PORTAL_DIR=/usr/share/xdg-desktop-portal/portals
+
+# =============================================================
+# RANDOM
+# =============================================================
+
+bspc rule -a Gsimplecal state=floating sticky=on rectangle=331x188+1487+60
+
+# Forzar cursor al inicio
+export XCURSOR_THEME="Bibata-Modern-Ice"
+export XCURSOR_SIZE=24
+xsetroot -cursor_name left_ptr &
+xrdb -merge <<< "Xcursor.theme: Bibata-Modern-Ice"
+xrdb -merge <<< "Xcursor.size: 24"
+
+# oreo_spark_violet_cursors
+
+# =============================================================
+# 💻 CONFIGURACIÓN DEL GESTOR DE VENTANAS BSPWM
+# =============================================================
+
+# ───────────────────────────────────────────────
+# Escritorios (monitores virtuales)
+# ───────────────────────────────────────────────
+# Crear 10 escritorios
+# bspc monitor -d I II III IV V VI VII VIII IX X
+
+# Crear 5 escritorios
+bspc monitor -d I II III IV V
+
+# ───────────────────────────────────────────────
+# Reglas y comportamiento general
+# ───────────────────────────────────────────────
+bspc config external_rules_command "$HOME/.config/bspwm/scripts/ExternalRules"
+bspc config automatic_scheme          alternate       # Alterna orientación entre splits
+bspc config initial_polarity          second_child    # Nuevas ventanas a la derecha/abajo
+bspc config removal_adjustment        true            # Reajusta espacio al cerrar ventana
+bspc config split_ratio               0.51            # Proporción de división por defecto
+bspc config window_gap 10
+
+# ───────────────────────────────────────────────
+# Modo monocle
+# ───────────────────────────────────────────────
+bspc config single_monocle            true            # Ocupa toda la pantalla una sola ventana
+bspc config borderless_monocle        false           # Mantiene borde en modo monocle
+bspc config gapless_monocle           false           # Mantiene huecos en modo monocle
+
+# ───────────────────────────────────────────────
+# Enfoque del ratón
+# ───────────────────────────────────────────────
+bspc config focus_follows_pointer     true            # Cambia foco al pasar el puntero
+bspc config pointer_follows_focus     false           # El puntero no salta al foco
+bspc config pointer_follows_monitor   true            # El puntero sigue el monitor activo
+bspc config pointer_motion_interval   5               # Sensibilidad del movimiento
+
+# ───────────────────────────────────────────────
+# Acciones con el puntero (ratón)
+# ───────────────────────────────────────────────
+bspc config pointer_modifier          mod4            # Tecla modificadora (Super)
+bspc config pointer_action1           move            # Super + clic izq → mover
+bspc config pointer_action2           resize_side     # Super + clic medio → redimensionar lateral
+bspc config pointer_action3           resize_corner   # Super + clic derecho → redimensionar esquina
+
+
+# Ventanas flotantes "scratch" siempre visibles
+bspc rule -a scratch sticky=on state=floating focus=on
+
+
+# =============================================================
+# 💡 SCRIPTS Y TAL
+# =============================================================
+
+~/Scripts/aviso_batería.sh &
+
+# =============================================================
+# 🧠 PROCESOS PRINCIPALES (Limpieza y reinicio)
+# =============================================================
+
+for process in picom polybar sxhkd; do
+  if pgrep -x "$process" >/dev/null; then
+    echo "$process ya está corriendo, no se relanza."
+  else
+    case "$process" in
+      picom)
+        picom -b --config "$HOME/.config/bspwm/config/picom.conf" \
+          --log-level=info --log-file ~/.config/bspwm/picom_gost.log &
+        ;;
+      polybar)
+        bash "$HOME/.config/polybar/ghost/Bar.bash" &
+        ;;
+      sxhkd)
+        sxhkd -c "$HOME/.config/bspwm/sxhkdrc" &
+        ;;
+    esac
+  fi
+done
+
+# =============================================================
+# ⚙️ INICIO DE SERVICIOS FUNDAMENTALES
+# =============================================================
+
+# Lanzar agente PolicyKit (necesario para Nemo y apps root)
+pidof -q polkit-gnome-authentication-agent-1 || \
+  /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+# Iniciar PulseAudio si no está corriendo
+#pgrep -x pulseaudio > /dev/null || pulseaudio --start
+
+# Configurar teclado en español
+setxkbmap es &
+
+# Establecer cursor predeterminado
+xsetroot -cursor_name left_ptr
+
+# Iniciar Dunst
+#pgrep dunst >/dev/null || dunst &
+
+
+# =============================================================
+# 🔐 Iniciar GNOME Keyring (para Brave, VSCode, etc.)
+# =============================================================
+if command -v gnome-keyring-daemon >/dev/null; then
+  eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+  export SSH_AUTH_SOCK
+  export GPG_AGENT_INFO
+  export GNOME_KEYRING_CONTROL
+fi
+
+# =============================================================
+# 🌫️ COMPOSITOR Y EFECTOS GRÁFICOS
+# =============================================================
+
+# Compositor estable (recomendado)
+picom -b --config "$HOME"/.config/bspwm/config/picom.conf --log-level=info --log-file ~/.config/bspwm/picom_gost.log
+
+# Alternativa: backends experimentales (solo si todo funciona bien)
+# picom --experimental-backends --config "$HOME"/.config/bspwm/picom.conf &
+
+
+
+
+# =============================================================
+# 🧩 TEMAS / RICES
+# =============================================================
+
+# Cargar colores, configuración visual, etc.
+. "$HOME"/.config/bspwm/rices/emilia/theme-config.bash
+
+
+# =============================================================
+# 🎹 ATAJOS DE TECLADO (SXHKD)
+# =============================================================
+
+sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
+
+# =============================================================
+# 📊 POLYBAR
+# =============================================================
+
+bash "$HOME"/.config/polybar/ghost/Bar.bash &
+
+# =============================================================
+# 💡 OPCIONAL: VMWARE, LAYOUTS, ETC
+# =============================================================
+
+# vmware-user-suid-wrapper
+# bsp-layout set even --watch &
+#dunst -config "$HOME"/.config/bspwm/dunstrc &
+
+
+
+
+
+
+# =============================================================
+# 🏁 FIN DEL SCRIPT
+# =============================================================

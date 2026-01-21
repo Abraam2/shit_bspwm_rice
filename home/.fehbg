@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/batoi/Fondos/top 5 monkey.jpg' 

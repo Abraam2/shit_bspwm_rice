@@ -1,0 +1,50 @@
+
+##########################################################
+#                      APLICACIONES                      #
+##########################################################
+
+
+
+# Terminal
+super + Return
+    kitty
+
+# Explorador de archivos
+super + e
+	nemo
+
+# VsCode
+alt + w
+    code
+
+# Virtualbox
+alt + e
+    virtualbox
+
+# Lanzador de aplicaciones
+super + @space
+    RofiLauncher --launcher
+
+# Navegador web
+super + w
+    firejail --noprofile /usr/bin/brave-browser --force-device-scale-factor=1.2 --password-store=basic
+
+# Power Menu
+super + p
+    powermenu_t3
+
+# Power Menu
+super + ctrl + q
+    powermenu_t3
+
+# Cerrar / matar ventana
+super + {_,shift + }q
+    bspc node -{c,k}
+
+# Selector de ventana (Alt+Tab estilo Windows)
+alt + Tab
+    e
+        #-rofi -show window -auto-select \
+
+
+

@@ -1,0 +1,115 @@
+configuration {
+	modi: 						"drun";
+	icon-theme: 				"Papirus-Dark";
+	application-fallback-icon: 	"Adwaita";
+    show-icons:                 true;
+	drun-display-format:        "{name}";
+	disable-history:            true;
+}
+
+@import "shared.rasi"
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       1260px;        /* 1400 × 0.9 */
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listbox" ];
+}
+
+listbox {
+    spacing:                     14px;           /* 15 × 0.9 */
+    padding:                     7px 7px;       /* 8 × 0.9 */
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    padding:                     0px;
+    background-color:            @selected;
+    text-color:                  inherit;
+    orientation:                 horizontal;
+    children:                    [ "entry" ];
+}
+
+entry {
+    enabled:                     true;
+    expand:                      true;
+    padding:                     14px;           /* 15 × 0.9 */
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
+    font:                        "Sans 22";      /* 24 × 0.9 ≈ 21.6 */
+}
+
+listview {
+    enabled:                     true;
+    columns:                     2;
+    lines:                       6;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               false;
+
+    spacing:                     7px;            /* 8 × 0.9 */
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     14px;           /* 15 × 0.9 */
+    padding:                     7px;            /* 8 × 0.9 */
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+element selected.normal {
+    background-color:            inherit;
+    text-color:                  @selected;
+}
+
+element-icon {
+    size:                        65px;           /* 72 × 0.9 ≈ 64.8 */
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+}
+
+element-text {
+    font:                        "Sans 22";      /* 24 × 0.9 ≈ 21.6 */
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}

@@ -1,0 +1,24 @@
+[Default Applications]
+x-scheme-handler/http=brave-browser.desktop
+x-scheme-handler/https=brave-browser.desktop
+text/html=brave-browser.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
+text/plain=code.desktop
+text/x-csrc=code.desktop
+application/x-shellscript=code.desktop
+inode/directory=nemo.desktop
+application/x-directory=nemo.desktop
+video/mp4=vlc.desktop
+image/gif=io.github.celluloid_player.Celluloid.desktop
+x-scheme-handler/rpgmakermp=nwjsoptions.desktop
+text/x-python3=code.desktop
+
+[Added Associations]
+x-scheme-handler/http=com.brave.Browser.desktop;
+text/plain=code.desktop;
+text/x-csrc=code.desktop;
+application/x-shellscript=code.desktop;
+video/mp4=vlc.desktop;
+image/gif=io.github.celluloid_player.Celluloid.desktop;
+text/x-python3=code.desktop;

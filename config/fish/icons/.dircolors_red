@@ -1,0 +1,18 @@
+# Archivos normales visibles
+FILE 38;2;245;165;165       # coral suave, combina con el rosa protagonista
+
+# Archivos ocultos
+.* 38;2;250;210;210         # mismo tono pero menos saturado
+
+# Carpetas visibles
+DIR 01;38;2;243;138;168     # color protagonista, saturado
+
+# Carpetas ocultas
+.*DIR 38;2;243;180;198      # color protagonista más suave, menos saturado
+
+# Ejecutables
+EXEC 01;38;2;242;120;140    # tono cálido y destacado
+
+# Enlaces simbólicos
+LINK 38;2;216;109;145       # combina con los demás, pero diferente
+

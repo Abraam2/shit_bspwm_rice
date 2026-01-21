@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+import subprocess
+
+# --- MAPA DE ICONOS ---
+
+#xprop WM_CLASS para añadir una nueva clase
+
+icon_map = {
+    # Explorador de Archivos (Nuevo icono: Carpeta abierta outline)
+    "thunar": "",
+    "pcmanfm": "",
+    "nautilus": "",
+    "dolphin": "",
+    'nemo': "",
+    "org.gnome.nautilus": "",
+    
+    # Brave
+     "brave-browser": "",
+
+    # Spotify
+    "spotify": ' ',
+
+
+    
+    # VS Code
+    "code": "",
+    "code-oss": "",
+    "vscodium": "",
+    
+    # VirtualBox (Nuevo icono: Pantalla / Display)
+    "virtualbox": "",
+    "virtualbox manager": "",
+    "virtualbox machine": "",
+    
+    # Otros
+    "kitty": "",
+    "keepassxc": "\uf084",
+    "firefox": "",
+    
+    # Icono por defecto (Nuevo: Signo de interrogación o ventana superpuesta)
+    # Así no lo confundes con los archivos.
+    "default": "" 
+}
+
+# --- COLORES ---
+COLOR_ACTIVE = "#7aa2f7"    
+COLOR_INACTIVE = "#4C566A"  
+
+def get_windows():
+    try:
+        output = subprocess.check_output(["wmctrl", "-lx"], text=True)
+        lines = output.strip().split("\n")
+        
+        active_id = subprocess.check_output(["xprop", "-root", "_NET_ACTIVE_WINDOW"], text=True).strip().split()[-1]
+        if active_id == "0x0": active_id = None
+        
+        window_list = []
+        
+        for line in lines:
+            parts = line.split()
+            if len(parts) < 3: continue
+            
+            wid = parts[0]
+            wclass_full = parts[2].lower()
+            wclass = wclass_full.split('.')[-1]
+            
+            # Buscamos el icono. Si no existe, devolvemos None
+            icon = icon_map.get(wclass, icon_map.get(wclass_full, None))
+
+            # Si no hay icono definido, ignoramos esta ventana por completo
+            if icon is None:
+                continue
+
+            click_cmd = f"%{{A1:wmctrl -i -a {wid}:}}%{{A2:wmctrl -i -c {wid}:}}"
+            end_click = "%{A}%{A}"
+            
+            is_active = False
+            if active_id:
+                try:
+                    if int(wid, 16) == int(active_id, 16): is_active = True
+                except: pass
+            
+            color = COLOR_ACTIVE if is_active else COLOR_INACTIVE
+            item = f"%{{F{color}}}{click_cmd}{icon}{end_click}%{{F-}}"
+            window_list.append(item)
+        
+        print("  ".join(window_list))
+
+    except Exception as e:
+        print("")
+
+if __name__ == "__main__":
+    get_windows()

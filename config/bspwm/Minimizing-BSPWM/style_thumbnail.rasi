@@ -1,0 +1,48 @@
+/* Configuración global */
+configuration {
+    font: "Iosevka Nerd Font 16";
+    show-icons: true;
+}
+
+/* Ventana principal */
+window {
+    background-color: #1E1E2E;
+    text-color: #C0CAF5;
+    border: 1px solid #F5C2E7;
+    border-radius: 12px;
+    width: 50%;
+    height: 40%;
+    location: center;
+}
+
+/* Input bar */
+inputbar {
+    children: [ prompt, entry ];
+    background-color: #181825;
+    text-color: #C0CAF5;
+    padding: 4px;
+}
+
+/* Lista de ventanas */
+listview {
+    columns: 1;
+    lines: 6;
+    spacing: 5px;
+    background-color: #181825;
+    dynamic: true;
+    layout: vertical;
+}
+
+/* Elementos (cada ventana) */
+element {
+    background-color: #181825;
+    text-color: #C0CAF5;
+    border-radius: 8px;
+    padding: 2px;
+    margin: 2px;
+    orientation: vertical;
+}
+
+/* Iconos de miniatura */
+element-icon {
+    size: 80px;

@@ -1,0 +1,89 @@
+configuration {
+    modi:                        "drun";
+    show-icons:                  true;
+    drun-display-format:         "{name}";
+}
+
+@import "shared.rasi"
+
+window {
+    enabled:                     true;
+    fullscreen:                  false;       // ❌ no fullscreen real
+    width:                       100%;
+    height:                      100%;       // ocupa todo el alto de la pantalla
+    location:                    center;      // centra la ventana
+    transparency:                "real";
+    cursor:                      "default";
+    spacing:                     0px;
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               0px;
+    border-color:                transparent;
+    background-color:            transparent;
+}
+
+mainbox {
+    enabled:                     true;
+    children:                    [ "listview" ];
+    background-color:            @background;
+    padding:                     0px;
+    spacing:                     0px;
+    vertical-align:              center;      
+}
+
+listview {
+    enabled:                     true;
+    columns:                     6;
+    lines:                       3;
+    spacing:                     20px;
+    padding:                     0px 25px;   // solo lateral
+    cycle:                       true;
+    dynamic:                     false;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                false;
+    fixed-columns:               true;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element {
+    enabled:                     true;
+    orientation:                 horizontal;
+    spacing:                     0px;
+    padding:                     2px;            // más compacto
+    border-radius:               18px;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+@media(max-aspect-ratio: 1.8) {
+    element {
+        orientation:             vertical;
+    }
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-icon {
+    size:                        25%;
+    border-radius:               18px;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element-text {
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    padding:                     8px 0px 6px 0px;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
