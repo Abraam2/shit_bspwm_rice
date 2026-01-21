@@ -61,7 +61,7 @@ super + q
 
 # Fondo aleatorio
 super + shift + w
-	feh -z --no-fehbg --bg-fill ~/Fondos
+	feh -z --no-fehbg --bg-fill ~/Wallpapers
 
 # Recargar configuración de sxhkd
 super + Escape

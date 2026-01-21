@@ -1,43 +1,33 @@
-#!/bin/sh
+#!/bin/bash
 # =============================================================
-# Author: gh0stzk
-# Repo: https://github.com/gh0stzk/dotfiles
-# Date: 27.06.2025 11:43:32
-# WallSelect - Dynamic wallpaper selector with intelligent caching system
-# Features:
-# ✔ Auto-updating menu (add/delete wallpapers without restart)
-# ✔ Parallel image processing (optimized CPU usage)
-# ✔ XXHash64 checksum verification for cache integrity
-# ✔ Orphaned cache detection and cleanup
-# ✔ Lockfile system for safe concurrent operations
-# ✔ Rofi integration with theme support
-# ✔ Lightweight (~2ms overhead on cache hits)
-#
-# Dependencies:
-# → Core: bspwm, xrandr, xdpyinfo, rofi, xxhsum (xxhash)
-# → Media: feh, imagemagick
-# → GNU: findutils, coreutils
-# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
-# Licensed under GPL-3.0 license
+# WallSelect - Selector de fondos (Versión Arreglada)
+# Fixes: Rutas corregidas y dependencia xxhash eliminada
 # =============================================================
 
-echo "DEBUG: fehbg path -> $HOME/.fehbg" > /tmp/wallselect_debug.log
-echo "DEBUG: whoami -> $(whoami)" >> /tmp/wallselect_debug.log
-echo "DEBUG: pwd -> $(pwd)" >> /tmp/wallselect_debug.log
-echo "DEBUG: DISPLAY -> $DISPLAY" >> /tmp/wallselect_debug.log
-echo "DEBUG: XAUTHORITY -> $XAUTHORITY" >> /tmp/wallselect_debug.log
+# Debugging (Opcional, para ver si falla algo en /tmp/wallselect_debug.log)
+echo "DEBUG: Inicio del script" > /tmp/wallselect_debug.log
 
-# Set some variables
+# 1. Definir variables y Rutas (CORREGIDO AQUI)
 read -r current_rice <"$HOME"/.config/bspwm/.rice
-wall_dir="$HOME/Fondos"
+wall_dir="$HOME/Wallpapers"   # <--- CAMBIADO DE Fondos A Wallpapers
 cacheDir="$HOME/.cache/$USER/$current_rice"
 
-# Create cache dir if not exists
+# Debug
+echo "DEBUG: Buscando fondos en: $wall_dir" >> /tmp/wallselect_debug.log
+
+# 2. Comprobación de seguridad
+if [ ! -d "$wall_dir" ]; then
+    notify-send "Error" "No encuentro la carpeta $wall_dir"
+    exit 1
+fi
+
+# Crear directorio de caché si no existe
 [ -d "$cacheDir" ] || mkdir -p "$cacheDir"
 
+# Comando de Rofi (Asegúrate de que este tema existe)
 rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/config/rofi-themes/WallSelect.rasi"
 
-# Detect number of cores and set a sensible number of jobs
+# Detectar núcleos para el proceso paralelo
 get_optimal_jobs() {
     cores=$(nproc)
     if [ "$cores" -le 2 ]; then
@@ -50,16 +40,21 @@ get_optimal_jobs() {
 }
 PARALLEL_JOBS=$(get_optimal_jobs)
 
+# Función de procesamiento (CAMBIADO xxh64sum POR md5sum)
 process_func_def='process_image() {
     imagen="$1"
     nombre_archivo=$(basename "$imagen")
     cache_file="${cacheDir}/${nombre_archivo}"
-    md5_file="${cacheDir}/.${nombre_archivo}.md5"
+    md5_file="${cacheDir}/.md5_${nombre_archivo}"
     lock_file="${cacheDir}/.lock_${nombre_archivo}"
-    current_md5=$(xxh64sum "$imagen" | cut -d " " -f1)
+    
+    # Usamos md5sum que viene instalado en todas partes
+    current_md5=$(md5sum "$imagen" | cut -d " " -f1)
+    
     (
         flock -x 9
         if [ ! -f "$cache_file" ] || [ ! -f "$md5_file" ] || [ "$current_md5" != "$(cat "$md5_file" 2>/dev/null)" ]; then
+            # Convertir imagen (Requiere imagemagick)
             convert "$imagen" -resize 500x500^ -gravity center -extent 500x500 "$cache_file"
             echo "$current_md5" > "$md5_file"
         fi
@@ -69,34 +64,43 @@ process_func_def='process_image() {
 
 export process_func_def cacheDir wall_dir
 
-# Clean old locks before starting
+# Limpiar bloqueos viejos
 rm -f "${cacheDir}"/.lock_* 2>/dev/null || true
 
-# Process files in parallel
+# Procesar imágenes en paralelo
 find "$wall_dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 | \
-xargs -0 -P "$PARALLEL_JOBS" -I {} sh -c "$process_func_def; process_image \"{}\""
+xargs -0 -P "$PARALLEL_JOBS" -I {} bash -c "$process_func_def; process_image \"{}\""
 
-# Clean orphaned cache files and their locks
+# Limpiar caché huérfana (imágenes borradas)
 for cached in "$cacheDir"/*; do
     [ -f "$cached" ] || continue
-    original="${wall_dir}/$(basename "$cached")"
+    nombre_archivo=$(basename "$cached")
+    
+    # Ignorar archivos ocultos o de control
+    [[ "$nombre_archivo" == .* ]] && continue
+    
+    original="${wall_dir}/${nombre_archivo}"
     if [ ! -f "$original" ]; then
-        nombre_archivo=$(basename "$cached")
         rm -f "$cached" \
-            "${cacheDir}/.${nombre_archivo}.md5" \
+            "${cacheDir}/.md5_${nombre_archivo}" \
             "${cacheDir}/.lock_${nombre_archivo}"
     fi
 done
 
-# Clean any remaining lock files
+# Limpiar bloqueos restantes
 rm -f "${cacheDir}"/.lock_* 2>/dev/null || true
 
-# Launch rofi
+# Lanzar Rofi
 wall_selection=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 | xargs -0 basename -a | LC_ALL=C sort | while IFS= read -r A; do printf '%s\000icon\037%s/%s\n' "$A" "$cacheDir" "$A"; done | $rofi_command)
 
-# Set wallpaper
+# Aplicar el fondo seleccionado
 if [ -n "$wall_selection" ]; then
     feh --bg-fill "${wall_dir}/${wall_selection}"
-    echo "#!/bin/sh\nfeh --bg-fill '${wall_dir}/${wall_selection}'" > "$HOME/.fehbg"
+    
+    # Guardar para el reinicio (Soporte dash/bash)
+    printf "#!/bin/sh\nfeh --bg-fill '%s/%s'\n" "$wall_dir" "$wall_selection" > "$HOME/.fehbg"
     chmod +x "$HOME/.fehbg"
+    
+    # Notificar (Opcional)
+    notify-send "Fondo cambiado" "$wall_selection" -i "${cacheDir}/${wall_selection}"
 fi

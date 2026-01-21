@@ -22,10 +22,10 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
+# Rutas de usuario
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-PATH=/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:$HOME/.config/bspwm/scripts:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:~/.config/rofi/scripts
-. "$HOME/.cargo/env"
-export QT_QPA_PLATFORMTHEME=gtk3
+if [ -d "$HOME/.config/bspwm/scripts" ] ; then
+    PATH="$HOME/.config/bspwm/scripts:$PATH"
+fi

@@ -102,7 +102,8 @@ install_dependencies() {
         "libdrm-dev" "libev-dev" "libpixman-1-dev" "libpcre2-dev" "libepoxy-dev"
         "uthash-dev" "libglib2.0-dev" "imagemagick" "mpd" "ncmpcpp"
         "brightnessctl" "playerctl" "pamixer" "maim" "xclip" "xdotool"
-        "python3-pip" "python3-gi" "redshift"
+        "python3-pip" "python3-gi" "redshift" "nemo" "flameshot" "brightnessctl" "xdotool"           
+        "libxdo-dev" "firejail" "playerctl" "pulseaudio-utils" "fastfetch" "imagemagick" 
     )
 
     printf "%b\n" "${BLD}${CYE}Instalando lista de paquetes...${CNC}"
@@ -411,7 +412,7 @@ configure_shell() {
 
 final_prompt() {
     clear
-    logo "Instalación Completada"
+    logo "Instalando Completada"
 
     printf "%b\n" "${BLD}${CGR}¡HEMOS TERMINADO!${CNC}"
     printf "%b\n" "Se ha instalado tu Rice, tus configs, fuentes, temas y Fish."
@@ -427,7 +428,16 @@ final_prompt() {
                 sudo reboot
                 break 
                 ;;
-
+            [Nn]|"") 
+                printf "\n%b\n" "${BLD}${CYE}Vale, pero recuerda reiniciar antes de usar nada.${CNC}"
+                exit 0 
+                ;;
+            *) 
+                printf " Escribe 'y' o 'n'\n" 
+                ;;
+        esac
+    done
+}
 
 # 1. Comprobaciones
 initial_checks
