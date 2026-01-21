@@ -26,6 +26,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-PATH=/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:/home/batoi/.config/bspwm/scripts:/home/batoi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:~/.config/rofi/scripts
+PATH=/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:$HOME/.config/bspwm/scripts:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:~/.config/rofi/scripts
 . "$HOME/.cargo/env"
 export QT_QPA_PLATFORMTHEME=gtk3

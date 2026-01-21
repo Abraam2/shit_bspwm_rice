@@ -1,17 +1,17 @@
-+ /home/batoi/.fehbg
++ $HOME/.fehbg
 + /usr/sbin/epoptes-client
-/home/batoi/.fehbg: 4: Syntax error: Unterminated quoted string
+$HOME/.fehbg: 4: Syntax error: Unterminated quoted string
 + xset s off -dpms
 + export QT_QPA_PLATFORMTHEME=qt6ct
 + QT_QPA_PLATFORMTHEME=qt6ct
 + export _JAVA_AWT_WM_NONREPARENTING=1
 + _JAVA_AWT_WM_NONREPARENTING=1
-+ PATH='/home/batoi/.config/bspwm/scripts:/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:/home/batoi/.cargo/bin:/home/batoi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
-+ PATH='/home/batoi/.config/rofi/scripts:/home/batoi/.config/bspwm/scripts:/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:/home/batoi/.cargo/bin:/home/batoi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
++ PATH='$HOME/.config/bspwm/scripts:/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
++ PATH='$HOME/.config/rofi/scripts:$HOME/.config/bspwm/scripts:/usr/lib/ccache/bin/ ~/.cargo/bin/:~/.local/bin/:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
 + redshift
 + read -r RICETHEME
 + export RICETHEME
-+ rice_dir=/home/batoi/.config/bspwm/themes/emilia
++ rice_dir=$HOME/.config/bspwm/themes/emilia
 + export PULSE_SERVER=unix:/run/user/1000/pulse/native
 + PULSE_SERVER=unix:/run/user/1000/pulse/native
 + export GTK_USE_PORTAL=1
@@ -37,7 +37,7 @@ Ubicación: 38.34° N, 0.49° O
 + xsetroot -cursor_name left_ptr
 + xrdb -merge
 + bspc monitor -d I II III IV V
-+ bspc config external_rules_command /home/batoi/.config/bspwm/scripts/ExternalRules
++ bspc config external_rules_command $HOME/.config/bspwm/scripts/ExternalRules
 + bspc config automatic_scheme alternate
 + bspc config initial_polarity second_child
 + bspc config removal_adjustment true
@@ -57,18 +57,18 @@ Ubicación: 38.34° N, 0.49° O
 + bspc rule -a scratch sticky=on state=floating focus=on
 + for process in picom polybar sxhkd
 + pgrep -x picom
-+ /home/batoi/Scripts/aviso_batería.sh
++ $HOME/Scripts/aviso_batería.sh
 + case "$process" in
 + for process in picom polybar sxhkd
 + pgrep -x polybar
-+ picom -b --config /home/batoi/.config/bspwm/config/picom.conf --log-level=info --log-file /home/batoi/.config/bspwm/picom_gost.log
++ picom -b --config $HOME/.config/bspwm/config/picom.conf --log-level=info --log-file $HOME/.config/bspwm/picom_gost.log
 + case "$process" in
 + for process in picom polybar sxhkd
 + pgrep -x sxhkd
-+ bash /home/batoi/.config/polybar/ghost/Bar.bash
-[ 21/01/26 07:58:29.440 session_init INFO ] Switching to log file: /home/batoi/.config/bspwm/picom_gost.log
++ bash $HOME/.config/polybar/ghost/Bar.bash
+[ 21/01/26 07:58:29.440 session_init INFO ] Switching to log file: $HOME/.config/bspwm/picom_gost.log
 + case "$process" in
-+ sxhkd -c /home/batoi/.config/bspwm/sxhkdrc
++ sxhkd -c $HOME/.config/bspwm/sxhkdrc
 + xsetroot -cursor_name left_ptr
 + pidof -q polkit-gnome-authentication-agent-1
 + setxkbmap es
@@ -81,9 +81,9 @@ discover_other_daemon: 1+ /usr/lib/policykit-1-gnome/polkit-gnome-authentication
 + export SSH_AUTH_SOCK
 + export GPG_AGENT_INFO
 + export GNOME_KEYRING_CONTROL
-+ picom -b --config /home/batoi/.config/bspwm/config/picom.conf --log-level=info --log-file /home/batoi/.config/bspwm/picom_gost.log
-[ 21/01/26 07:58:29.465 session_init INFO ] Switching to log file: /home/batoi/.config/bspwm/picom_gost.log
-+ . /home/batoi/.config/bspwm/rices/emilia/theme-config.bash
++ picom -b --config $HOME/.config/bspwm/config/picom.conf --log-level=info --log-file $HOME/.config/bspwm/picom_gost.log
+[ 21/01/26 07:58:29.465 session_init INFO ] Switching to log file: $HOME/.config/bspwm/picom_gost.log
++ . $HOME/.config/bspwm/rices/emilia/theme-config.bash
 ++ bg='#1a1b26'
 ++ fg='#c0caf5'
 ++ black='#15161e'
@@ -146,9 +146,9 @@ discover_other_daemon: 1+ /usr/lib/policykit-1-gnome/polkit-gnome-authentication
 ++ rofi_active='#9ece6a'
 ++ rofi_urgent='#f7768e'
 ++ ENGINE=CustomDir
-++ CUSTOM_DIR=/home/batoi/Fondos
-++ CUSTOM_WALL=/home/batoi/Fondos/totoro.png
-++ CUSTOM_ANIMATED=/home/batoi/.config/bspwm/src/assets/animated_wall.mp4
+++ CUSTOM_DIR=$HOME/Fondos
+++ CUSTOM_WALL=$HOME/Fondos/totoro.png
+++ CUSTOM_ANIMATED=$HOME/.config/bspwm/src/assets/animated_wall.mp4
 ++ bspc config border_width 4
 ++ bspc config normal_border_color '#77767B'
 ++ bspc config focused_border_color '#62A0EA'
@@ -156,8 +156,8 @@ discover_other_daemon: 1+ /usr/lib/policykit-1-gnome/polkit-gnome-authentication
 ++ bspc config bottom_padding 1
 ++ bspc config left_padding 1
 ++ bspc config right_padding 1
-+ sxhkd -c /home/batoi/.config/bspwm/sxhkdrc
-+ bash /home/batoi/.config/polybar/ghost/Bar.bash
++ sxhkd -c $HOME/.config/bspwm/sxhkdrc
++ bash $HOME/.config/polybar/ghost/Bar.bash
 Could not grab key 36 with modfield 64: the combination is already grabbed.
 Could not grab key 36 with modfield 80: the combination is already grabbed.
 Could not grab key 36 with modfield 66: the combination is already grabbed.

@@ -91,8 +91,8 @@ rofi_urgent="$red"
 # - CustomAnimated (Set an animated wallpaper. "mp4, mkv, gif")
 # - Slideshow (Change randomly every 15 minutes your wallpaper from Walls rice directory)
 ENGINE="CustomDir"
-CUSTOM_DIR="/home/batoi/Fondos"
-CUSTOM_WALL="/home/batoi/Fondos/totoro.png"
+CUSTOM_DIR="$HOME/Fondos"
+CUSTOM_WALL="$HOME/Fondos/totoro.png"
 CUSTOM_ANIMATED="$HOME/.config/bspwm/src/assets/animated_wall.mp4"
 
 
