@@ -91,19 +91,18 @@ install_dependencies() {
     printf "%b\n" "${BLD}${CYE}Actualizando repositorios...${CNC}"
     sudo apt update && sudo apt upgrade -y
 
-    # Lista de paquetes equivalentes para Ubuntu
-    # He intentado buscar los equivalentes a lo que pedía G0stkz
+    
     DEPENDENCIES=(
-        "bspwm" "sxhkd" "fish" "lxappearance" "polybar" "rofi" "kitty" "feh" "dunst" 
-        "fish" "zsh" "thunar" "thunar-archive-plugin" "thunar-volman" 
-        "gvfs-backends" "calc" "unzip" "wget" "curl" "git" "jq"
+        "bspwm" "sxhkd" "fish" "maim" "imagemagick" "lxappearance" "polybar" "rofi" "kitty" 
+        "pkg-config" "fish" "zsh" "thunar" "thunar-archive-plugin" "thunar-volman" 
+        "gvfs-backends" "calc" "unzip" "wget" "curl" "git" "jq" "feh" "dunst" 
         "build-essential" "autoconf" "automake" "cmake" "meson" "ninja-build"
         "libx11-dev" "libxext-dev" "libxinerama-dev" "libxrandr-dev" 
         "libxrender-dev" "libgl1-mesa-dev" "libdbus-1-dev" "libconfig-dev" 
         "libdrm-dev" "libev-dev" "libpixman-1-dev" "libpcre2-dev" "libepoxy-dev"
         "uthash-dev" "libglib2.0-dev" "imagemagick" "mpd" "ncmpcpp"
         "brightnessctl" "playerctl" "pamixer" "maim" "xclip" "xdotool"
-        "python3-pip" "python3-gi" "redshift" "nemo" "flameshot" "brightnessctl" "xdotool"           
+        "python3-pip" "python3-gi" "redshift" "nemo" "flameshot" "brightnessctl" "xdotool"  "libxcb-composite0-dev"          
         "libxdo-dev" "firejail" "playerctl" "pulseaudio-utils" "imagemagick" 
     )
 
@@ -138,6 +137,24 @@ install_picom() {
     printf "\n%b\n" "${BLD}${CGR}Picom instalado.${CNC}"
     sleep 2
     cd "$HOME" || exit
+}
+
+install_i3lock_color() {
+    clear
+    logo "Instalando i3lock-color"
+    printf "Este paquete es necesario para que el bloqueo se vea con colores y círculos.\n"
+    
+    # Instalamos dependencias de compilación
+    sudo apt install -y autoconf automake entity-checker libev-dev libpango1.0-dev libsn-dev libxcb-xinerama0-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-util0-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxkbcommon-dev libxkbcommon-x11-dev
+    
+    # Clonamos y compilamos
+    cd /tmp
+    git clone https://github.com/Raymo111/i3lock-color.git
+    cd i3lock-color
+    ./install-i3lock-color.sh
+    
+    printf "  [OK] i3lock-color instalado.\n"
+    cd ~
 }
 
 install_ohmyposh() {
@@ -211,6 +228,27 @@ install_pokemon() {
     
     sleep 2
     cd "$HOME" || exit
+}
+
+install_fastfetch() {
+    clear
+    printf "Instalando Fastfetch desde GitHub...\n"
+    sleep 1
+
+    # Descargamos el paquete .deb más reciente para 64 bits
+    wget https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-linux-amd64.deb -O /tmp/fastfetch.deb
+
+    # Lo instalamos con dpkg
+    if [ -f "/tmp/fastfetch.deb" ]; then
+        sudo dpkg -i /tmp/fastfetch.deb
+        # Esto arregla dependencias si faltara algo
+        sudo apt-get install -f -y
+        rm /tmp/fastfetch.deb
+        printf "  [OK] Fastfetch se ha instalado correctamente.\n"
+    else
+        printf "  [ERROR] No se pudo descargar el archivo de GitHub.\n"
+    fi
+    sleep 2
 }
 
 clone_dotfiles() {
@@ -296,6 +334,7 @@ install_dotfiles() {
     # Fuentes
     if [ -d "$REPO_DIR/home/fonts" ]; then
         cp -r "$REPO_DIR/home/fonts/"* "$HOME/.local/share/fonts/"
+        fc-cache -fv
         printf "  [OK] Fuentes instaladas\n"
     fi
     
@@ -447,8 +486,11 @@ welcome
 # 2. Instalación
 install_dependencies
 install_picom
+install_i3lock_color
 install_pokemon
 install_ohmyposh
+install_fastfetch
+
 
 # 3. Archivos (La parte que personalizamos antes)
 clone_dotfiles

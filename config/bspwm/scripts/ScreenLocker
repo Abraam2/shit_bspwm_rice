@@ -52,7 +52,7 @@ default_lockscreen () {
 rice_lockscreen () {
 
     # Wallpapers dir
-    image_dir="$HOME/Fondos"
+    image_dir="$HOME/Wallpapers"
 
     # Select random image
     lock_image=$(find "$image_dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | shuf -n 1)
