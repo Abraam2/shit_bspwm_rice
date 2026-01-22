@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-#  INSTALLER FINAL - (Ubuntu 24.04 Noble Compatible)
+#  INSTALLER FINAL - VERSION AMONG US + BACKUP
 # ==============================================================================
 
 # Colores
@@ -10,18 +10,106 @@ CRE=$(tput setaf 1); CYE=$(tput setaf 3); CGR=$(tput setaf 2); CBL=$(tput setaf 
 REPO_URL="https://github.com/Abraam2/shit_bspwm_rice"
 REPO_DIR="$HOME/mis-dotfiles"
 
-logo() { printf "%b" "${BLD}${CRE}[ ${CYE}INSTALLER ${CRE}]${CNC}\n\n"; }
+# --- 0. ARTE Y MENSAJES ---
+
+logo() {
+    text="$1"
+    printf "%b" "
+${BLD}${CRE}
+⣿⣿⣿⠟⢹⣶⣶⣝⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ 
+⣿⣿⡟⢰⡌⠿⢿⣿⡾⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ 
+⣿⣿⣿⢸⣿⣤⣒⣶⣾⣳⡻⣿⣿⣿⣿⡿⢛⣯⣭⣭⣭⣽⣻⣿⣿⣿ 
+⣿⣿⣿⢸⣿⣿⣿⣿⢿⡇⣶⡽⣿⠟⣡⣶⣾⣯⣭⣽⣟⡻⣿⣷⡽⣿ 
+⣿⣿⣿⠸⣿⣿⣿⣿⢇⠃⣟⣷⠃⢸⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽ 
+⣿⣿⣿⣇⢻⣿⣿⣯⣕⠧⢿⢿⣇⢯⣝⣒⣛⣯⣭⣛⣛⣣⣿⣿⣿⡇ 
+⣿⣿⣿⣿⣌⢿⣿⣿⣿⣿⡘⣞⣿⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇ 
+⣿⣿⣿⣿⣿⣦⠻⠿⣿⣿⣷⠈⢞⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇ 
+⣿⣿⣿⣿⣿⣿⣗⠄⢿⣿⣿⡆⡈⣽⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢻ 
+⣿⣿⣿⣿⡿⣻⣽⣿⣆⠹⣿⡇⠁⣿⡼⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣾ 
+⣿⠿⣛⣽⣾⣿⣿⠿⠋⠄⢻⣷⣾⣿⣧⠟⣡⣾⣿⣿⣿⣿⣿⣿⡇⣿ 
+⢼⡟⢿⣿⡿⠋⠁⣀⡀⠄⠘⠊⣨⣽⠁⠰⣿⣿⣿⣿⣿⣿⣿⡍⠗⣿ 
+⡼⣿⠄⠄⠄⠄⣼⣿⡗⢠⣶⣿⣿⡇⠄⠄⣿⣿⣿⣿⣿⣿⣿⣇⢠⣿ 
+⣷⣝⠄⠄⢀⠄⢻⡟⠄⣿⣿⣿⣿⠃⠄⠄⢹⣿⣿⣿⣿⣿⣿⣿⢹⣿ 
+⣿⣿⣿⣿⣿⣧⣄⣁⡀⠙⢿⡿⠋⠄⣸⡆⠄⠻⣿⡿⠟⢛⣩⣝⣚⣿ 
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣤⣤⣤⣾⣿⣿⣄⠄⠄⠄⣴⣿⣿⣿⣇⣿ 
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠛⠿⣿⣫⣾⣿
+${CNC}
+   ${BLD}${CRE}[ ${CYE}${text} ${CRE}]${CNC}\n\n"
+}
 
 initial_checks() {
     if [ "$(id -u)" = 0 ]; then printf "%b" "${BLD}${CRE}¡NO lo ejecutes como root!${CNC}\n"; exit 1; fi
 }
 
-# --- 1. INSTALACIÓN DE PAQUETES (EL FIX IMPORTANTE) ---
+welcome() {
+    clear
+    logo "Bienvenido $USER"
+
+    printf "%b" "${BLD}${CGR}Este script hecho completamente con IA instalará mi basura de RICE en Ubuntu/Debian, no tiene capacidad para romper tus sistema:${CNC}
+
+  ${BLD}${CGR}[${CYE}1${CGR}]${CNC} Actualizar sistema e instalar dependencias
+  ${BLD}${CGR}[${CYE}2${CGR}]${CNC} Compilar Picom v12 y i3lock-color
+  ${BLD}${CGR}[${CYE}3${CGR}]${CNC} Instalar Fastfetch y Pokemon-Colorscripts
+  ${BLD}${CGR}[${CYE}4${CGR}]${CNC} Hacer BACKUP de tu configuración actual
+  ${BLD}${CGR}[${CYE}5${CGR}]${CNC} Instalar Dotfiles (Fuentes, Temas, Configs)
+
+${BLD}${CRE}[!]${CNC} ${BLD}${CRE}Revisa que tengas internet.${CNC}
+"
+
+    while :; do
+        printf " %b" "${BLD}${CGR}¿Quieres continuar?${CNC} [y/N]: "
+        read -r yn
+        case "$yn" in
+            [Yy]) break ;;
+            [Nn]|"") printf "\n%b\n" "${BLD}${CYE}Cancelado.${CNC}"; exit 0 ;;
+            *) printf "\n%b\n" "${BLD}${CRE}Escribe 'y' o 'n'${CNC}" ;;
+        esac
+    done
+}
+
+# --- 1. BACKUP (LO QUE PEDISTE) ---
+
+backup_existing_config() {
+    logo "Haciendo Backup de Seguridad"
+    
+    # Creamos carpeta con fecha y hora
+    TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
+    BACKUP_DIR="$HOME/.RiceBackup/$TIMESTAMP"
+    mkdir -p "$BACKUP_DIR"
+
+    printf "%b\n" "${BLD}${CYE}>>> GUARDANDO TUS COSAS AQUÍ:${CNC}"
+    printf "%b\n" "${BLD}${CBL}    $BACKUP_DIR ${CNC}\n"
+    sleep 2
+
+    # Carpetas críticas de .config
+    DIRS="bspwm sxhkd polybar rofi kitty picom dunst fish fastfetch ncmpcpp mpd"
+    
+    for dir in $DIRS; do
+        if [ -d "$HOME/.config/$dir" ]; then
+            cp -r "$HOME/.config/$dir" "$BACKUP_DIR/"
+            printf "  [OK] Salvado: .config/$dir\n"
+        fi
+    done
+
+    # Archivos sueltos del HOME
+    FILES=".gtkrc-2.0 .fehbg .zshrc .bashrc .profile .xinitrc"
+    for f in $FILES; do
+        if [ -f "$HOME/$f" ]; then
+            cp "$HOME/$f" "$BACKUP_DIR/"
+            printf "  [OK] Salvado: $f\n"
+        fi
+    done
+
+    printf "\n%b\n" "${BLD}${CGR}Backup completado. Podemos romper cosas tranquilos.${CNC}"
+    sleep 2
+}
+
+# --- 2. DEPENDENCIAS BLINDADAS ---
+
 install_dependencies() {
-    logo "Instalando Dependencias..."
+    logo "Instalando Dependencias (APT)"
     sudo apt update
     
-    # HE ELIMINADO 'libsn-dev' QUE ROMPÍA TODO Y PUESTO LOS NOMBRES CORRECTOS
     DEPENDENCIES=(
         "bspwm" "sxhkd" "fish" "maim" "imagemagick" "lxappearance" "polybar" "rofi" "kitty" 
         "pkg-config" "unzip" "wget" "curl" "git" "jq" "feh" "dunst" "pavucontrol" "gsimplecal"
@@ -37,20 +125,19 @@ install_dependencies() {
         "libjpeg-dev" "libgif-dev" "libcairo2-dev"
     )
 
-    # Instalamos y comprobamos si falla
     if sudo apt install -y "${DEPENDENCIES[@]}"; then
         printf "%b\n" "${CGR}Dependencias instaladas correctamente.${CNC}"
     else
-        printf "%b\n" "${BLD}${CRE}¡ERROR CRÍTICO! Falló apt install. Revisa tu internet o los repos.${CNC}"
+        printf "%b\n" "${BLD}${CRE}¡ERROR CRÍTICO! Falló apt install.${CNC}"
         exit 1
     fi
 }
 
-# --- 2. COMPILACIONES ---
+# --- 3. COMPILACIONES ---
+
 install_i3lock_color() {
-    # Solo compilamos si no está o es versión vieja
     if ! command -v i3lock &> /dev/null || ! i3lock --version | grep -q "color"; then
-        logo "Compilando i3lock-color..."
+        logo "Compilando i3lock-color"
         cd /tmp || exit
         [ -d "i3lock-color" ] && rm -rf i3lock-color
         git clone https://github.com/Raymo111/i3lock-color.git
@@ -64,7 +151,7 @@ install_i3lock_color() {
 
 install_picom() {
     if ! command -v picom &> /dev/null; then
-        logo "Compilando Picom v12..."
+        logo "Compilando Picom v12"
         cd /tmp || exit
         [ -d "picom" ] && rm -rf picom
         git clone https://github.com/yshui/picom.git
@@ -81,7 +168,7 @@ install_picom() {
 
 install_fastfetch() {
     if ! command -v fastfetch &> /dev/null; then
-        logo "Instalando Fastfetch..."
+        logo "Instalando Fastfetch"
         wget https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-linux-amd64.deb -O /tmp/fastfetch.deb
         sudo dpkg -i /tmp/fastfetch.deb
         sudo apt-get install -f -y
@@ -91,7 +178,7 @@ install_fastfetch() {
 
 install_pokemon() {
     if ! command -v pokemon-colorscripts &> /dev/null; then
-        logo "Instalando Pokemon Colorscripts..."
+        logo "Instalando Pokemon Colorscripts"
         cd /tmp || exit
         [ -d "pokemon-colorscripts" ] && rm -rf pokemon-colorscripts
         git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
@@ -101,9 +188,10 @@ install_pokemon() {
     fi
 }
 
-# --- 3. ARCHIVOS Y CONFIGURACIÓN ---
+# --- 4. INSTALACIÓN DE DOTFILES ---
+
 update_dotfiles() {
-    logo "Actualizando Dotfiles..."
+    logo "Actualizando Dotfiles"
     if [ -d "$REPO_DIR/.git" ]; then
         cd "$REPO_DIR" || exit
         git reset --hard origin/main
@@ -114,38 +202,37 @@ update_dotfiles() {
 }
 
 install_dotfiles() {
-    logo "Aplicando Configuraciones..."
+    logo "Aplicando Configuraciones"
+    
     mkdir -p "$HOME/.config" "$HOME/.local/share/fonts" "$HOME/Wallpapers"
 
     cp -r "$REPO_DIR/config/"* "$HOME/.config/"
     
-    # Fuentes
     if [ -d "$REPO_DIR/home/fonts" ]; then
         cp -r "$REPO_DIR/home/fonts/"* "$HOME/.local/share/fonts/"
         fc-cache -fv &> /dev/null
     fi
 
-    # Wallpapers
     if [ -d "$REPO_DIR/misc/wallpapers" ]; then
         cp -r "$REPO_DIR/misc/wallpapers/"* "$HOME/Wallpapers/"
     fi
 
-    # Scripts y permisos
     chmod +x "$HOME/.config/bspwm/bspwmrc"
     find "$HOME/.config/bspwm/scripts" -type f -exec chmod +x {} \;
 }
 
 check_session_file() {
-    # Aseguramos que BSPWM aparezca en el Login
     if [ ! -f "/usr/share/xsessions/bspwm.desktop" ]; then
         logo "Reparando sesión de BSPWM..."
-        # Reinstalamos solo bspwm por si acaso
         sudo apt install --reinstall -y bspwm
     fi
 }
 
-# --- EJECUCIÓN ---
+# --- 5. EJECUCIÓN ---
+
 initial_checks
+welcome                 # <- El menú que pedías
+backup_existing_config  # <- El backup explícito
 install_dependencies
 install_i3lock_color
 install_picom
@@ -155,4 +242,8 @@ update_dotfiles
 install_dotfiles
 check_session_file
 
-printf "\n%b\n" "${BLD}${CGR}¡INSTALACIÓN CORRECTA! Reinicia ahora.${CNC}"
+clear
+logo "¡INSTALACIÓN COMPLETADA!"
+printf "%b\n" "${BLD}${CGR}Reinicia ahora.${CNC}"
+printf "%b\n" "${BLD}${CYE}Olvidona: Si la lías, tu backup está en ~/.RiceBackup${CNC}\n"
+printf "%b\n" "${BLD}${CYE}Bebe agua${CNC}\n"
