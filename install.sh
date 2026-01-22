@@ -1,27 +1,27 @@
 #!/bin/bash
 # ==============================================================================
-#  INSTALLER SEGURO - REVISADO Y AMPLIADO
+#  INSTALLER FINAL - ARREGLADO (Ubuntu 24.04 Noble Compatible)
 # ==============================================================================
 
 # Colores
-CRE=$(tput setaf 1)    # Rojo
-CYE=$(tput setaf 3)    # Amarillo
-CGR=$(tput setaf 2)    # Verde
-CBL=$(tput setaf 4)    # Azul
-BLD=$(tput bold)       # Negrita
-CNC=$(tput sgr0)       # Reset
+CRE=$(tput setaf 1); CYE=$(tput setaf 3); CGR=$(tput setaf 2); CBL=$(tput setaf 4); BLD=$(tput bold); CNC=$(tput sgr0)
 
-# --- CONFIGURACIÓN ---
+# CONFIGURACIÓN
 REPO_URL="https://github.com/Abraam2/shit_bspwm_rice"
 REPO_DIR="$HOME/mis-dotfiles"
 
-# --- FUNCIONES ---
+logo() { printf "%b" "${BLD}${CRE}[ ${CYE}INSTALLER ${CRE}]${CNC}\n\n"; }
 
+initial_checks() {
+    if [ "$(id -u)" = 0 ]; then printf "%b" "${BLD}${CRE}¡NO lo ejecutes como root!${CNC}\n"; exit 1; fi
+}
+
+# --- 1. INSTALACIÓN DE PAQUETES (EL FIX IMPORTANTE) ---
 install_dependencies() {
-    printf "%b\n" "${BLD}${CYE}Instalando el arsenal de dependencias (APT)...${CNC}"
+    logo "Instalando Dependencias..."
     sudo apt update
     
-    # Lista completa incluyendo las librerías de compilación que nos hacían falta
+    # HE ELIMINADO 'libsn-dev' QUE ROMPÍA TODO Y PUESTO LOS NOMBRES CORRECTOS
     DEPENDENCIES=(
         "bspwm" "sxhkd" "fish" "maim" "imagemagick" "lxappearance" "polybar" "rofi" "kitty" 
         "pkg-config" "unzip" "wget" "curl" "git" "jq" "feh" "dunst" "pavucontrol" "gsimplecal"
@@ -32,17 +32,25 @@ install_dependencies() {
         "uthash-dev" "libglib2.0-dev" "libxcb-composite0-dev" "libxdo-dev"
         "libxcb-xinerama0-dev" "libxcb-xkb-dev" "libxcb-xrm-dev" "libxcb-util-dev"
         "libxcb-image0-dev" "libxcb-keysyms1-dev" "libxcb-randr0-dev" "libxcb-shm0-dev"
-        "libxkbcommon-dev" "libxkbcommon-x11-dev" "libpango1.0-dev" "libsn-dev"
+        "libxkbcommon-dev" "libxkbcommon-x11-dev" "libpango1.0-dev" "libstartup-notification0-dev"
         "brightnessctl" "playerctl" "pamixer" "xclip" "xdotool" "nemo" "flameshot"
-        "libjpeg-dev" "libgif-dev" "libcairo2-dev" "libstartup-notification0-dev"
+        "libjpeg-dev" "libgif-dev" "libcairo2-dev"
     )
-    sudo apt install -y "${DEPENDENCIES[@]}"
+
+    # Instalamos y comprobamos si falla
+    if sudo apt install -y "${DEPENDENCIES[@]}"; then
+        printf "%b\n" "${CGR}Dependencias instaladas correctamente.${CNC}"
+    else
+        printf "%b\n" "${BLD}${CRE}¡ERROR CRÍTICO! Falló apt install. Revisa tu internet o los repos.${CNC}"
+        exit 1
+    fi
 }
 
+# --- 2. COMPILACIONES ---
 install_i3lock_color() {
-    # Solo compilamos si no está o es la versión vieja
+    # Solo compilamos si no está o es versión vieja
     if ! command -v i3lock &> /dev/null || ! i3lock --version | grep -q "color"; then
-        printf "%b\n" "${BLD}${CYE}Compilando i3lock-color...${CNC}"
+        logo "Compilando i3lock-color..."
         cd /tmp || exit
         [ -d "i3lock-color" ] && rm -rf i3lock-color
         git clone https://github.com/Raymo111/i3lock-color.git
@@ -54,23 +62,26 @@ install_i3lock_color() {
     fi
 }
 
-install_pokemon() {
-    if ! command -v pokemon-colorscripts &> /dev/null; then
-        printf "%b\n" "${BLD}${CYE}Instalando Pokemon Colorscripts...${CNC}"
+install_picom() {
+    if ! command -v picom &> /dev/null; then
+        logo "Compilando Picom v12..."
         cd /tmp || exit
-        [ -d "pokemon-colorscripts" ] && rm -rf pokemon-colorscripts
-        git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
-        cd pokemon-colorscripts || exit
-        sudo ./install.sh
+        [ -d "picom" ] && rm -rf picom
+        git clone https://github.com/yshui/picom.git
+        cd picom || exit
+        git submodule update --init --recursive
+        meson setup --buildtype=release build
+        ninja -C build
+        sudo ninja -C build install
         cd ~ || exit
     else
-        printf "%b\n" "${CGR}Pokemon Colorscripts ya está instalado.${CNC}"
+        printf "%b\n" "${CGR}Picom ya está instalado.${CNC}"
     fi
 }
 
 install_fastfetch() {
     if ! command -v fastfetch &> /dev/null; then
-        printf "%b\n" "${BLD}${CYE}Instalando Fastfetch desde GitHub...${CNC}"
+        logo "Instalando Fastfetch..."
         wget https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-linux-amd64.deb -O /tmp/fastfetch.deb
         sudo dpkg -i /tmp/fastfetch.deb
         sudo apt-get install -f -y
@@ -78,25 +89,37 @@ install_fastfetch() {
     fi
 }
 
+install_pokemon() {
+    if ! command -v pokemon-colorscripts &> /dev/null; then
+        logo "Instalando Pokemon Colorscripts..."
+        cd /tmp || exit
+        [ -d "pokemon-colorscripts" ] && rm -rf pokemon-colorscripts
+        git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
+        cd pokemon-colorscripts || exit
+        sudo ./install.sh
+        cd ~ || exit
+    fi
+}
+
+# --- 3. ARCHIVOS Y CONFIGURACIÓN ---
 update_dotfiles() {
+    logo "Actualizando Dotfiles..."
     if [ -d "$REPO_DIR/.git" ]; then
-        printf "%b\n" "${BLD}${CYE}Actualizando repo existente...${CNC}"
         cd "$REPO_DIR" || exit
         git reset --hard origin/main
         git pull
     else
-        printf "%b\n" "${BLD}${CYE}Clonando repo...${CNC}"
         git clone "$REPO_URL" "$REPO_DIR"
     fi
 }
 
 install_dotfiles() {
-    printf "%b\n" "${BLD}${CYE}Copiando configuraciones...${CNC}"
+    logo "Aplicando Configuraciones..."
     mkdir -p "$HOME/.config" "$HOME/.local/share/fonts" "$HOME/Wallpapers"
 
     cp -r "$REPO_DIR/config/"* "$HOME/.config/"
     
-    # Fuentes y Caché
+    # Fuentes
     if [ -d "$REPO_DIR/home/fonts" ]; then
         cp -r "$REPO_DIR/home/fonts/"* "$HOME/.local/share/fonts/"
         fc-cache -fv &> /dev/null
@@ -107,17 +130,29 @@ install_dotfiles() {
         cp -r "$REPO_DIR/misc/wallpapers/"* "$HOME/Wallpapers/"
     fi
 
-    # Permisos
+    # Scripts y permisos
     chmod +x "$HOME/.config/bspwm/bspwmrc"
     find "$HOME/.config/bspwm/scripts" -type f -exec chmod +x {} \;
 }
 
+check_session_file() {
+    # Aseguramos que BSPWM aparezca en el Login
+    if [ ! -f "/usr/share/xsessions/bspwm.desktop" ]; then
+        logo "Reparando sesión de BSPWM..."
+        # Reinstalamos solo bspwm por si acaso
+        sudo apt install --reinstall -y bspwm
+    fi
+}
+
 # --- EJECUCIÓN ---
+initial_checks
 install_dependencies
 install_i3lock_color
-install_pokemon
+install_picom
 install_fastfetch
+install_pokemon
 update_dotfiles
 install_dotfiles
+check_session_file
 
-printf "\n%b\n" "${BLD}${CGR}¡Listo! Prueba los atajos ahora.${CNC}"
+printf "\n%b\n" "${BLD}${CGR}¡INSTALACIÓN CORRECTA! Reinicia ahora.${CNC}"
