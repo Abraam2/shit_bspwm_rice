@@ -18,31 +18,31 @@ REPO_DIR="$HOME/mis-dotfiles"
 # --- FUNCIONES ---
 
 install_dependencies() {
-    printf "%b\n" "${BLD}${CYE}Instalando Dependencias (APT)...${CNC}"
+    printf "%b\n" "${BLD}${CYE}Instalando el arsenal de dependencias (APT)...${CNC}"
     sudo apt update
     
-    # Añadidos gsimplecal, pavucontrol y dependencias de compilación para i3lock-color
+    # Lista completa incluyendo las librerías de compilación que nos hacían falta
     DEPENDENCIES=(
-        "bspwm" "sxhkd" "fish" "maim" "imagemagick" "gsimplecal" "lxappearance" "polybar" "rofi" "kitty" 
-        "pkg-config" "unzip" "wget" "curl" "git" "jq" "feh" "dunst" "pavucontrol" 
-        "build-essential" "autoconf" "automake" "cmake" "meson" "ninja-build"
-        "libx11-dev" "libxext-dev" "libxinerama-dev" "libxrandr-dev" 
+        "bspwm" "sxhkd" "fish" "maim" "imagemagick" "lxappearance" "polybar" "rofi" "kitty" 
+        "pkg-config" "unzip" "wget" "curl" "git" "jq" "feh" "dunst" "pavucontrol" "gsimplecal"
+        "build-essential" "autoconf" "automake" "cmake" "meson" "ninja-build" "libpam0g-dev"
+        "libx11-dev" "libxext-dev" "libxinerama-dev" "libxrandr-dev" "libx11-xcb-dev"
         "libxrender-dev" "libgl1-mesa-dev" "libdbus-1-dev" "libconfig-dev" 
         "libdrm-dev" "libev-dev" "libpixman-1-dev" "libpcre2-dev" "libepoxy-dev"
         "uthash-dev" "libglib2.0-dev" "libxcb-composite0-dev" "libxdo-dev"
-        "libxcb-xinerama0-dev" "libxcb-xkb-dev" "libxcb-xrm-dev" "libxcb-util0-dev"
-        "libxcb-image0-dev" "libxcb-keysyms1-dev" "libxcb-randr0-dev"
-        "libxkbcommon-dev" "libxkbcommon-x11-dev" "libpango1.0-dev"
+        "libxcb-xinerama0-dev" "libxcb-xkb-dev" "libxcb-xrm-dev" "libxcb-util-dev"
+        "libxcb-image0-dev" "libxcb-keysyms1-dev" "libxcb-randr0-dev" "libxcb-shm0-dev"
+        "libxkbcommon-dev" "libxkbcommon-x11-dev" "libpango1.0-dev" "libsn-dev"
         "brightnessctl" "playerctl" "pamixer" "xclip" "xdotool" "nemo" "flameshot"
+        "libjpeg-dev" "libgif-dev" "libcairo2-dev" "libstartup-notification0-dev"
     )
-
     sudo apt install -y "${DEPENDENCIES[@]}"
 }
 
 install_i3lock_color() {
-    # Si i3lock no existe o no es la versión "color", compilamos
+    # Solo compilamos si no está o es la versión vieja
     if ! command -v i3lock &> /dev/null || ! i3lock --version | grep -q "color"; then
-        printf "%b\n" "${BLD}${CYE}Instalando i3lock-color (Compilando)...${CNC}"
+        printf "%b\n" "${BLD}${CYE}Compilando i3lock-color...${CNC}"
         cd /tmp || exit
         [ -d "i3lock-color" ] && rm -rf i3lock-color
         git clone https://github.com/Raymo111/i3lock-color.git
@@ -50,7 +50,7 @@ install_i3lock_color() {
         ./install-i3lock-color.sh
         cd ~ || exit
     else
-        printf "%b\n" "${CGR}i3lock-color ya está presente.${CNC}"
+        printf "%b\n" "${CGR}i3lock-color ya está instalado.${CNC}"
     fi
 }
 
