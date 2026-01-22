@@ -32,7 +32,7 @@ install_dependencies() {
         "uthash-dev" "libglib2.0-dev" "libxcb-composite0-dev" "libxdo-dev"
         "libxcb-xinerama0-dev" "libxcb-xkb-dev" "libxcb-xrm-dev" "libxcb-util0-dev"
         "libxcb-image0-dev" "libxcb-keysyms1-dev" "libxcb-randr0-dev"
-        "libxkbcommon-dev" "libxkbcommon-x11-dev" "libpango1.0-dev" "libsn-dev"
+        "libxkbcommon-dev" "libxkbcommon-x11-dev" "libpango1.0-dev"
         "brightnessctl" "playerctl" "pamixer" "xclip" "xdotool" "nemo" "flameshot"
     )
 
