@@ -23,8 +23,8 @@ install_dependencies() {
     
     # Añadidos gsimplecal, pavucontrol y dependencias de compilación para i3lock-color
     DEPENDENCIES=(
-        "bspwm" "sxhkd" "fish" "maim" "imagemagick" "lxappearance" "polybar" "rofi" "kitty" 
-        "pkg-config" "unzip" "wget" "curl" "git" "jq" "feh" "dunst" "pavucontrol" "gsimplecal"
+        "bspwm" "sxhkd" "fish" "maim" "imagemagick" "gsimplecal" "lxappearance" "polybar" "rofi" "kitty" 
+        "pkg-config" "unzip" "wget" "curl" "git" "jq" "feh" "dunst" "pavucontrol" 
         "build-essential" "autoconf" "automake" "cmake" "meson" "ninja-build"
         "libx11-dev" "libxext-dev" "libxinerama-dev" "libxrandr-dev" 
         "libxrender-dev" "libgl1-mesa-dev" "libdbus-1-dev" "libconfig-dev" 
