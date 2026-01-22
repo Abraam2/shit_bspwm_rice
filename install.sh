@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-#  INSTALLER FINAL - ARREGLADO (Ubuntu 24.04 Noble Compatible)
+#  INSTALLER FINAL - (Ubuntu 24.04 Noble Compatible)
 # ==============================================================================
 
 # Colores
