@@ -10,11 +10,10 @@ icon_map = {
     'nemo': "",
     "org.gnome.nautilus": "",
     "brave-browser": "",
-    "spotify": ' ',
+    "spotify": '',
     "code": "",
     "code-oss": "",
     "vscodium": "",
-    # Iconos para VirtualBox (ahora los gestionamos con lógica abajo)
     "virtualbox": "", 
     "kitty": "",
     "keepassxc": "\uf084",
